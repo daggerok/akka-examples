@@ -35,6 +35,7 @@ script:
   # jboss-eap-h2-ejb, jboss-eap-h2-cdi
   - >
     for path in \
+      kotlin-gradle-maven-docker-starter \
       java-gradle-maven-docker-starter \
     ; do
 

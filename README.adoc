@@ -7,5 +7,6 @@ This repository contains Akka playground projects examples.
 link:https://daggerok.github.io/akka-examples[Documentation]
 
 . link:./java-gradle-maven-docker-starter[java (gradle / maven) starter in docker]
+. link:./kotlin-gradle-maven-docker-starter[kotlin (gradle / maven) starter in docker]
 
 //end::content[]

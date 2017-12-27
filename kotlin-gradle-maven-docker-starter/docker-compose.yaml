@@ -2,22 +2,22 @@ version: "2.1"
 
 services:
 
-  java-gradle-starter:
+  kotlin-gradle-starter:
     build:
       context: .
       dockerfile: ./docker/gradle/Dockerfile
-    volumes: ["java-gradle-starter-data:/home/app"]
+    volumes: ["kotlin-gradle-starter-data:/home/app"]
 #    ports:
 #      - "5005:5005"
 #      - "8080:8080"
 #    restart: unless-stopped
     networks: [backing-services]
 
-  java-maven-starter:
+  kotlin-maven-starter:
     build:
       context: .
       dockerfile: ./docker/maven/Dockerfile
-    volumes: ["java-maven-starter-data:/home/app"]
+    volumes: ["kotlin-maven-starter-data:/home/app"]
 #    ports:
 #      - "5006:5005"
 #      - "8081:8080"
@@ -25,8 +25,8 @@ services:
     networks: [backing-services]
 
 volumes:
-  java-gradle-starter-data: {}
-  java-maven-starter-data: {}
+  kotlin-gradle-starter-data: {}
+  kotlin-maven-starter-data: {}
 
 networks:
   backing-services:

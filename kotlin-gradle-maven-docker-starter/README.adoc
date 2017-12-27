@@ -1,0 +1,23 @@
+= Kotlin Gradle Maven Docker Starter image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
+
+//tag::content[]
+
+This is just an Akka kotlin gradle / maven / docker / starter project...
+
+.build and test
+[source,bash]
+----
+docker-compose down -v; ./mvnw clean package; ./gradlew clean build; docker-compose up --build --force-recreate --remove-orphans
+
+# or
+docker-compose down -v
+./mvnw clean package
+./gradlew clean build
+docker-compose up --build --force-recreate --remove-orphans
+----
+
+links:
+
+. link:https://doc.akka.io/docs/akka/current/actors.html#creating-actors[Akka docs]
+
+//end::content[]
