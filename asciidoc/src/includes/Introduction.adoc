@@ -1,0 +1,3 @@
+This documentation contains some help to
+link:{github_url}[examples from akka-examples repository].
+Akk playground projects

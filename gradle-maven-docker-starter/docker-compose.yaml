@@ -1,0 +1,33 @@
+version: "2.1"
+
+services:
+
+  gradle-starter:
+    build:
+      context: .
+      dockerfile: ./docker/gradle/Dockerfile
+    volumes: ["gradle-starter-data:/home/app"]
+#    ports:
+#      - "5005:5005"
+#      - "8080:8080"
+#    restart: unless-stopped
+    networks: [backing-services]
+
+  maven-starter:
+    build:
+      context: .
+      dockerfile: ./docker/maven/Dockerfile
+    volumes: ["maven-starter-data:/home/app"]
+#    ports:
+#      - "5006:5005"
+#      - "8081:8080"
+#    restart: unless-stopped
+    networks: [backing-services]
+
+volumes:
+  gradle-starter-data: {}
+  maven-starter-data: {}
+
+networks:
+  backing-services:
+    driver: bridge

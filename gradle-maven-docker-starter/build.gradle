@@ -1,0 +1,47 @@
+buildscript {
+
+  ext {
+    lombokVersion = "1.16.18"
+    slf4jVersion = "1.7.25"
+  }
+
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath "com.github.jengelman.gradle.plugins:shadow:2.0.2"
+  }
+}
+
+allprojects {
+
+  apply plugin: "base"
+  apply plugin: "maven"
+
+  group = "daggerok"
+  version = "0.0.1"
+}
+
+subprojects {
+
+  apply plugin: "java"
+  apply plugin: "com.github.johnrengelman.shadow"
+
+  sourceCompatibility = targetCompatibility = 1.8
+
+  repositories {
+    mavenLocal()
+    maven { url "http://repo.maven.apache.org/maven2" }
+  }
+
+  dependencies {
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+    compile "org.slf4j:slf4j-jdk14:$slf4jVersion"
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+  }
+
+  shadowJar.mustRunAfter jar
+  jar.enabled = false
+}

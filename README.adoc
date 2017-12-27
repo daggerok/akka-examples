@@ -1,0 +1,11 @@
+= akka-examples image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
+
+//tag::content[]
+
+This repository contains Akka examples
+
+link:https://daggerok.github.io/akka-examples[Documentation]
+
+. link:./gradle-maven-docker-starter[Kumuluzee MP 2.0 JAX-WS]
+
+//end::content[]

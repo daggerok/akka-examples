@@ -1,0 +1,13 @@
+= gradle-maven-docker-starter image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
+
+//tag::content[]
+
+=== gradle-maven-docker-starter
+
+.build and test
+[source,bash]
+----
+docker-compose down -v; ./mvnw clean package; ./gradlew clean build; docker-compose up --build --force-recreate --remove-orphans
+----
+
+//end::content[]
