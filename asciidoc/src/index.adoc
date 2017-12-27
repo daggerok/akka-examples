@@ -15,6 +15,6 @@ Maksim Kostromin <daggerok@gmail.com>
 include::includes/Introduction.adoc[]
 
 == Gradle Maven Docker Starter
-include::../../gradle-maven-docker-starter/README.adoc[tags=content]
+include::../../java-gradle-maven-docker-starter/README.adoc[tags=content]
 
 == Enjoy! :)
