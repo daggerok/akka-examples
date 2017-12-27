@@ -6,6 +6,6 @@ This repository contains Akka playground projects examples.
 
 link:https://daggerok.github.io/akka-examples[Documentation]
 
-. link:./gradle-maven-docker-starter[Kumuluzee MP 2.0 JAX-WS]
+. link:./gradle-maven-docker-starter[Starter]
 
 //end::content[]
