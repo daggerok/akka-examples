@@ -2,12 +2,18 @@
 
 //tag::content[]
 
-=== gradle-maven-docker-starter
+This is just a gradle / maven / docker / starter project...
 
 .build and test
 [source,bash]
 ----
 docker-compose down -v; ./mvnw clean package; ./gradlew clean build; docker-compose up --build --force-recreate --remove-orphans
+
+# or
+docker-compose down -v
+./mvnw clean package
+./gradlew clean build
+docker-compose up --build --force-recreate --remove-orphans
 ----
 
 //end::content[]

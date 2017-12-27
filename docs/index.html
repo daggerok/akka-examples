@@ -549,11 +549,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#gradle-maven-docker-starter">1. Gradle Maven Docker Starter</a>
-<ul class="sectlevel2">
-<li><a href="#gradle-maven-docker-starter-2">1.1. gradle-maven-docker-starter</a></li>
-</ul>
-</li>
+<li><a href="#gradle-maven-docker-starter">1. Gradle Maven Docker Starter</a></li>
 <li><a href="#enjoy">2. Enjoy! :)</a></li>
 </ul>
 </div>
@@ -572,13 +568,19 @@ Akk playground projects</p>
 <div class="sect1">
 <h2 id="gradle-maven-docker-starter">1. Gradle Maven Docker Starter</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="gradle-maven-docker-starter-2">1.1. gradle-maven-docker-starter</h3>
+<div class="paragraph">
+<p>This is just a gradle / maven / docker / starter project&#8230;&#8203;</p>
+</div>
 <div class="listingblock">
 <div class="title">build and test</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">docker-compose down -v; ./mvnw clean package; ./gradlew clean build; docker-compose up --build --force-recreate --remove-orphans</code></pre>
-</div>
+<pre class="CodeRay highlight"><code data-lang="bash">docker-compose down -v; ./mvnw clean package; ./gradlew clean build; docker-compose up --build --force-recreate --remove-orphans
+
+# or
+docker-compose down -v
+./mvnw clean package
+./gradlew clean build
+docker-compose up --build --force-recreate --remove-orphans</code></pre>
 </div>
 </div>
 </div>

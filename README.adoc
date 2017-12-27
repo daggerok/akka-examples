@@ -2,7 +2,7 @@
 
 //tag::content[]
 
-This repository contains Akka examples
+This repository contains Akka playground projects examples.
 
 link:https://daggerok.github.io/akka-examples[Documentation]
 
