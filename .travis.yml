@@ -40,14 +40,15 @@ script:
 
       cd ${parent}/${path}
 
-      bash mvnw clean package -U -T 2
-      bash gradle clean build
+      bash mvnw clean package
+      bash gradlew clean build
       docker-compose build --force-rm --no-cache --pull
       docker-compose up --force-recreate --remove-orphans
-      sleep 20
       docker-compose down -v
 
     done;
+
+  - docker system prune -af --volumes
 
 cache:
   directories:

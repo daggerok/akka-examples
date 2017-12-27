@@ -1,6 +1,7 @@
 buildscript {
 
   ext {
+    akkaVersion = "2.5.8"
     lombokVersion = "1.16.18"
     slf4jVersion = "1.7.25"
   }

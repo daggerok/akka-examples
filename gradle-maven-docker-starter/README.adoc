@@ -1,8 +1,8 @@
-= gradle-maven-docker-starter image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
+= Java Gradle Maven Docker Starter image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
 
 //tag::content[]
 
-This is just a gradle / maven / docker / starter project...
+This is just an Akka java gradle / maven / docker / starter project...
 
 .build and test
 [source,bash]
@@ -15,5 +15,9 @@ docker-compose down -v
 ./gradlew clean build
 docker-compose up --build --force-recreate --remove-orphans
 ----
+
+links:
+
+. link:https://doc.akka.io/docs/akka/current/actors.html#creating-actors[Akka docs]
 
 //end::content[]
