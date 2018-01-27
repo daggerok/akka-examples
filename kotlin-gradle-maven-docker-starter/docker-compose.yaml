@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/gradle/Dockerfile
-    volumes: ["kotlin-gradle-starter-data:/home/app"]
+    volumes: ["kotlin-gradle-starter-data:/home/appuser"]
 #    ports:
 #      - "5005:5005"
 #      - "8080:8080"
@@ -17,7 +17,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/maven/Dockerfile
-    volumes: ["kotlin-maven-starter-data:/home/app"]
+    volumes: ["kotlin-maven-starter-data:/home/appuser"]
 #    ports:
 #      - "5006:5005"
 #      - "8081:8080"

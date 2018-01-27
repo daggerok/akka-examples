@@ -8,5 +8,6 @@ link:https://daggerok.github.io/akka-examples[Documentation]
 
 . link:./java-gradle-maven-docker-starter[java (gradle / maven) starter in docker]
 . link:./kotlin-gradle-maven-docker-starter[kotlin (gradle / maven) starter in docker]
+. link:./scala-gradle-maven-docker-starter[scala (gradle / maven) starter in docker]
 
 //end::content[]

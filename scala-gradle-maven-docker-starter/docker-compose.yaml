@@ -1,0 +1,23 @@
+version: "2.1"
+
+services:
+
+  gradle-akka-app:
+    extends:
+      service: gradle-akka-app
+      file: ./docker-compose-gradle.yaml
+    networks: [backing-services]
+#    ports: ["8080:8080"]
+#    restart: unless-stopped
+
+  maven-akka-app:
+    extends:
+      service: maven-akka-app
+      file: ./docker-compose-maven.yaml
+    networks: [backing-services]
+#    ports: ["8080:8080"]
+#    restart: unless-stopped
+
+networks:
+  backing-services:
+    driver: bridge

@@ -22,6 +22,8 @@ allprojects {
 
   group "daggerok"
   version "0.0.1"
+
+  defaultTasks "clean", "build"
 }
 
 subprojects {
