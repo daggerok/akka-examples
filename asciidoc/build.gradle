@@ -1,7 +1,12 @@
+buildscript {
+  ext {
+    ghPagesFolder = "$projectDir.parent/docs"
+  }
+}
+
 plugins {
   id "base"
   id "org.asciidoctor.convert" version "1.5.7"
-  id "org.ajoberstar.git-publish" version "0.2.2"
 }
 
 group "daggerok"
@@ -31,35 +36,28 @@ asciidoctor {
 
 asciidoctor.shouldRunAfter clean
 
-// read more: https://github.com/ajoberstar/gradle-git-publish
-gitPublish {
-  repoUri = "git@github.com:daggerok/akka-examples.git"
-  branch = "gh-pages"
-  contents {
-    from "$buildDir/asciidoc/html5"
-    from "$projectDir/src/static"
-    into "."
-  }
-}
+//// read more: https://github.com/ajoberstar/gradle-git-publish
+//gitPublish {
+//  repoUri = "git@github.com:daggerok/akka-examples.git"
+//  branch = "gh-pages"
+//  contents {
+//    from "$buildDir/asciidoc/html5"
+//    from "$projectDir/src/static"
+//    into "."
+//  }
+//}
+//
+//task docs {
+//  dependsOn gitPublishPush
+//  shouldRunAfter clean, build
+//}
 
-assemble.dependsOn asciidoctor
+build.dependsOn asciidoctor
 asciidoctor.shouldRunAfter clean
-
-task docs {
-  dependsOn gitPublishPush
-  shouldRunAfter clean, build
-}
 
 task wrapper(type: Wrapper) {
   gradleVersion = "4.5"
   distributionType = "ALL"
-}
-
-/*
-buildscript {
-  ext {
-    ghPagesFolder = "$projectDir.parent/docs"
-  }
 }
 
 task docs(type: Copy) {
@@ -73,4 +71,3 @@ task docs(type: Copy) {
 clean.doFirst {
   delete ghPagesFolder
 }
-*/

@@ -18,7 +18,7 @@ before_install:
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
 - stop_any 5432 5672 27017 8080
 script:
-- bash gradlew clean build
+- bash gradlew clean build docs
 
 - export parent=$(pwd)
 
