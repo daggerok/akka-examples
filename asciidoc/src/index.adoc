@@ -18,5 +18,6 @@ include::includes/Introduction.adoc[]
 include::../../java-gradle-maven-docker-starter/README.adoc[tags=content]
 include::../../kotlin-gradle-maven-docker-starter/README.adoc[tags=content]
 include::../../scala-gradle-maven-docker-starter/README.adoc[tags=content]
+include::../../another-akka-try/README.adoc[tags=content]
 
 == Enjoy! :)
