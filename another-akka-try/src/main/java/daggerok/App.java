@@ -1,67 +1,72 @@
 package daggerok;
 
-import akka.actor.AbstractActor;
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Props;
+import akka.actor.*;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
-import io.vavr.control.Try;
-import lombok.SneakyThrows;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
+import scala.Option;
+import scala.PartialFunction;
+import scala.concurrent.Future;
+import scala.util.Try;
 
-import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+
+import static lombok.AccessLevel.PRIVATE;
 
 @Slf4j
 public class App {
 
-  public enum Ping {INSTANCE}
-  public enum Pong {INSTANCE}
-  public enum Done {INSTANCE}
+  @RequiredArgsConstructor(staticName = "with")
+  public static class Init { public final int amount; }
 
-  public static final Consumer<Integer> sleep
-      = n -> Try.run(() -> TimeUnit.MILLISECONDS.sleep(n))
-                .onFailure(throwable -> log.error("{}", throwable.getLocalizedMessage(), throwable));
+  public enum Ping { INSTANCE }
+  public enum Pong { INSTANCE }
+  public enum Done { INSTANCE }
 
   public static class UntypedPingPongActor extends AbstractActor {
 
-    private int timeout;
+    private int timeout = 5;
     private CountDownLatch countDownLatch;
 
-    private void zzZzZzz(final Object msg) {
-      log.info("{} {}", msg.getClass(), countDownLatch.getCount());
-      App.sleep.accept(timeout);
-      if (countDownLatch.getCount() > 1)
+    @SneakyThrows
+    private void init(final int amount) {
+      if (amount > 0) timeout = amount;
+      countDownLatch = new CountDownLatch(timeout);
+      log.info("Choose {}! So let's get started!", timeout);
+    }
+
+    @SneakyThrows
+    private void pingPong(final Object msg) {
+      Thread.sleep(timeout);
+      log.info("{} {}", msg.getClass().getSimpleName(), countDownLatch.getCount());
+      if (countDownLatch.getCount() < 1) {
+        //sender().tell(Done.INSTANCE, self());
+        self().forward(Done.INSTANCE, context());
+      }
+      else {
         countDownLatch.countDown();
-      else sender().tell(Done.INSTANCE, self());
+        //self().tell(msg, self());
+        self().forward(msg, context());
+      }
     }
 
     @Override public Receive createReceive() {
       return
           receiveBuilder()
-              .match(Integer.class, sleep -> {
-                if (sleep > 0) {
-                  this.timeout = sleep;
-                  countDownLatch = new CountDownLatch(sleep);
-                }
-                zzZzZzz(sleep);
-                sender().tell(Ping.INSTANCE, self());
+              .match(Init.class, input -> {
+                init(input.amount);
+                pingPong(Ping.INSTANCE);
               })
-              .match(Ping.class, msg -> {
-                zzZzZzz(msg);
-                sender().tell(Pong.INSTANCE, self());
-              })
-              .match(Pong.class, msg -> {
-                zzZzZzz(msg);
-                sender().tell(Ping.INSTANCE, self());
+              .matchEquals(Ping.INSTANCE, msg -> pingPong(Pong.INSTANCE))
+              .matchEquals(Pong.INSTANCE, msg -> pingPong(Ping.INSTANCE))
+              .matchEquals(Done.INSTANCE, msg -> {
+                log.info("Done.");
+                context().system().terminate();
               })
               .matchAny(o -> {
-                log.info("Done.");
-                System.exit(0);
+                log.warn("Unexpected.");
+                context().system().terminate();
               })
               .build();
     }
@@ -69,12 +74,11 @@ public class App {
 
   @SneakyThrows
   public static void main(String[] args) {
+
     final Config config = ConfigFactory.load(App.class.getClassLoader(), "/application.conf");
     final ActorSystem actorSystem = ActorSystem.create("ping-pong-system", config);
     final ActorRef actorRef = actorSystem.actorOf(Props.create(UntypedPingPongActor.class), "ping-pong-actor");
-    final int duration = 100;
 
-    actorRef.tell(duration, actorRef);
-    sleep.accept(duration);
+    actorRef.tell(Init.with(30), actorRef);
   }
 }
