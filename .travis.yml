@@ -18,11 +18,11 @@ before_install:
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
 - stop_any 5432 5672 27017 8080
 script:
-- bash gradlew clean build docs
+- bash gradlew clean build asciidoctor
 - export parent=$(pwd)
 #
 - cd ${parent}/another-akka-try
-- bash ./gradlew clean build distZip distTar installDist
+- bash ./gradlew clean installDist
 - bash build/install/another-akka-try/bin/another-akka-try
 - bash ./mvnw clean package com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
 - docker logs -f anotherakkatry_maven-another-akka-try-app_1

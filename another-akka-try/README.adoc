@@ -4,8 +4,12 @@
 
 .test
 ----
-./gradlew clean build distZip distTar installDist
+./gradlew clean installDist
 bash build/install/another-akka-try/bin/another-akka-try
+
+./gradlew clean distZip
+unzip -o build/distributions/*.zip -d /tmp
+bash /tmp/another-akka-try-0.0.1/bin/another-akka-try
 
 ./mvnw
 java -jar target/*-all.jar
@@ -25,6 +29,7 @@ generated using link:https://github.com/daggerok/generator-daggerok-fatjar/[dagg
 inside:
 
 . java 8 based project
+. akka-actor
 . lombok (slf4j + logback logging)
 . vavr (javaslang)
 . support fatjar

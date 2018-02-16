@@ -20,4 +20,11 @@ include::../../kotlin-gradle-maven-docker-starter/README.adoc[tags=content]
 include::../../scala-gradle-maven-docker-starter/README.adoc[tags=content]
 include::../../another-akka-try/README.adoc[tags=content]
 
+== Links
+
+. link:https://www.lightbend.com/akka[Learning Akka]
+. link:https://www.lightbend.com/blog/akka-revealed-jvm-architects-journey-from-resilient-actors-to-scalable-clusters[Videos: Intro to Akka]
+. link:https://dzone.com/refcardz/reactive-programming-akka[Reactive Programming with Akka]
+. link:https://www.lightbend.com/blog/akka-and-the-zen-of-reactive-system-design[Akka and the Zen of Reactive System Design]
+
 == Enjoy! :)
