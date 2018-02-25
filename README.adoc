@@ -11,4 +11,7 @@ link:https://daggerok.github.io/akka-examples[Documentation]
 . link:./kotlin-gradle-maven-docker-starter[kotlin (gradle / maven) starter in docker]
 . link:./scala-gradle-maven-docker-starter[scala (gradle / maven) starter in docker]
 
+TODO:
+. spring-boot + akka link:https://www.linkedin.com/pulse/spring-boot-akka-part-1-aliaksandr-liakh[1] and link:https://www.linkedin.com/pulse/spring-boot-akka-part-2-aliaksandr-liakh[2]
+
 //end::content[]
