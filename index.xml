@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>Akka examples akka-examples (0.0.1) <inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://travis-ci.org/daggerok/akka-examples.svg?branch=master"/>
+</imageobject>
+<textobject><phrase>Build Status</phrase></textobject>
+</inlinemediaobject></title>
+<date>2018-07-08 16:49:23 UTC</date>
+<author>
+<personname>
+<firstname>Maksim</firstname>
+<surname>Kostromin</surname>
+</personname>
+<email>daggerok@gmail.com</email>
+</author>
+<authorinitials>MK</authorinitials>
+<revhistory>
+<revision>
+<revnumber>0.0.1</revnumber>
+<date>2018-07-08 16:49:23 UTC</date>
+<authorinitials>MK</authorinitials>
+</revision>
+</revhistory>
+</info>
+<preface>
+<title></title>
+<bridgehead xml:id="introduction" renderas="sect1">Introduction</bridgehead>
+<simpara>This documentation contains some help to
+<link xl:href="https://github.com/daggerok/akka-examples">examples from akka-examples repository</link>.
+Akk playground projects</simpara>
+</preface>
+<chapter xml:id="gradle-maven-docker-starter">
+<title>Gradle Maven Docker Starter</title>
+<simpara>This is just an Akka java gradle / maven / docker / starter project&#8230;&#8203;</simpara>
+<formalpara>
+<title>build and test</title>
+<para>
+<programlisting language="bash" linenumbering="unnumbered">docker-compose down -v; ./mvnw clean package; ./gradlew clean build; docker-compose up --build --force-recreate --remove-orphans
+
+# or
+docker-compose down -v
+./mvnw clean package
+./gradlew clean build
+docker-compose up --build --force-recreate --remove-orphans</programlisting>
+</para>
+</formalpara>
+<simpara>links:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://doc.akka.io/docs/akka/current/actors.html#creating-actors">Akka docs</link></simpara>
+</listitem>
+</itemizedlist>
+<simpara>This is just an Akka kotlin gradle / maven / docker / starter project&#8230;&#8203;</simpara>
+<formalpara>
+<title>build and test</title>
+<para>
+<programlisting language="bash" linenumbering="unnumbered">docker-compose down -v; ./mvnw clean package; ./gradlew clean build; docker-compose up --build --force-recreate --remove-orphans
+
+# or
+docker-compose down -v
+./mvnw clean package
+./gradlew clean build
+docker-compose up --build --force-recreate --remove-orphans</programlisting>
+</para>
+</formalpara>
+<simpara>links:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://kotlinlang.org/docs/reference/using-maven.html">kotlin with maven</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://doc.akka.io/docs/akka/current/actors.html#creating-actors">Akka docs</link></simpara>
+</listitem>
+</itemizedlist>
+<simpara>generated using <link xl:href="https://github.com/daggerok/generator-jvm">jvm</link> yeoman generator</simpara>
+<formalpara>
+<title>build</title>
+<para>
+<screen>./mvnw clean package com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
+./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down
+
+./gradlew clean build composeUp
+./gradlew composeDown</screen>
+</para>
+</formalpara>
+<formalpara>
+<title>test</title>
+<para>
+<screen>./gradlew clean installDist
+bash build/install/another-akka-try/bin/another-akka-try
+
+./gradlew clean distZip
+unzip -o build/distributions/*.zip -d /tmp
+bash /tmp/another-akka-try-0.0.1/bin/another-akka-try
+
+./mvnw
+java -jar target/*-all.jar</screen>
+</para>
+</formalpara>
+<formalpara>
+<title>build</title>
+<para>
+<screen>./mvnw clean package com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
+./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down
+
+./gradlew clean build composeUp
+./gradlew composeDown</screen>
+</para>
+</formalpara>
+<simpara>generated using <link xl:href="https://github.com/daggerok/generator-jvm/">jvm</link> yeoman generator</simpara>
+</chapter>
+<chapter xml:id="links">
+<title>Links</title>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://www.lightbend.com/akka">Learning Akka</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.lightbend.com/blog/akka-revealed-jvm-architects-journey-from-resilient-actors-to-scalable-clusters">Videos: Intro to Akka</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://dzone.com/refcardz/reactive-programming-akka">Reactive Programming with Akka</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.lightbend.com/blog/akka-and-the-zen-of-reactive-system-design">Akka and the Zen of Reactive System Design</link></simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+<chapter xml:id="enjoy">
+<title>Enjoy! :)</title>
+
+</chapter>
+</book>
