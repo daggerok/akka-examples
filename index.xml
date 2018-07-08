@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2018-07-08 22:25:29 UTC</date>
+<date>2018-07-08 22:29:52 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2018-07-08 22:25:29 UTC</date>
+<date>2018-07-08 22:29:52 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -32,6 +32,27 @@
 <simpara>This documentation contains some help to
 <link xl:href="https://github.com/daggerok/akka-examples">examples from akka-examples repository</link>.
 Akka playground projects</simpara>
+<simpara>This repository contains Akka playground projects examples.</simpara>
+<simpara><link xl:href="https://daggerok.github.io/akka-examples">Documentation</link></simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="./idea-scala-sbt-project">Learning Akka projects</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="./another-akka-try">ping-pong: yet another java gradle / maven docker akka jar&#8230;&#8203;</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="./java-gradle-maven-docker-starter">java (gradle / maven) starter in docker</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="./kotlin-gradle-maven-docker-starter">kotlin (gradle / maven) starter in docker</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="./scala-gradle-maven-docker-starter">scala (gradle / maven) starter in docker</link></simpara>
+</listitem>
+</itemizedlist>
+<simpara>TODO:
+- spring-boot + akka <link xl:href="https://www.linkedin.com/pulse/spring-boot-akka-part-1-aliaksandr-liakh">1</link> and <link xl:href="https://www.linkedin.com/pulse/spring-boot-akka-part-2-aliaksandr-liakh">2</link></simpara>
 </preface>
 <chapter xml:id="implementation">
 <title>Implementation</title>
