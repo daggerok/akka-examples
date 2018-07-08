@@ -1,4 +1,4 @@
-= Akka examples {project-name} ({project-version}) image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link={github_url}]
+= {project-name} ({project-version}) image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link={github_url}]
 Maksim Kostromin <daggerok@gmail.com>
 {docdatetime}
 :toc:
@@ -15,7 +15,7 @@ Maksim Kostromin <daggerok@gmail.com>
 
 include::includes/Introduction.adoc[]
 
-== Gradle Maven Docker Starter
+== Implementation
 
 include::../java-gradle-maven-docker-starter/README.adoc[tags=content]
 include::../kotlin-gradle-maven-docker-starter/README.adoc[tags=content]
