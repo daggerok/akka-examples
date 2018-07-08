@@ -2,11 +2,11 @@ package daggerok
 
 import akka.actor.{Actor, ActorSystem, Props}
 
-case class MyMessage(body: String)
+case class MyMessage(name: String)
 
 class MyActor extends Actor {
   override def receive: Receive = {
-    case MyMessage(body) => println(s"Hello, $body!")
+    case MyMessage(name) => println(s"Hello, $name!")
   }
 }
 
@@ -16,7 +16,7 @@ object Application {
     val mySystem = ActorSystem("my-actor-system")
     val myActor = mySystem.actorOf(Props[MyActor], "my-actor")
 
-    myActor ! MyMessage("Akka")
+    myActor ! MyMessage("Максимко")
     Thread.sleep(1000)
     mySystem.terminate()
   }
