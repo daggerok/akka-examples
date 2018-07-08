@@ -6,6 +6,7 @@ This repository contains Akka playground projects examples.
 
 link:https://daggerok.github.io/akka-examples[Documentation]
 
+- link:./idea-scala-sbt-project[Learning Akka projects]
 - link:./another-akka-try[ping-pong: yet another java gradle / maven docker akka jar...]
 - link:./java-gradle-maven-docker-starter[java (gradle / maven) starter in docker]
 - link:./kotlin-gradle-maven-docker-starter[kotlin (gradle / maven) starter in docker]
