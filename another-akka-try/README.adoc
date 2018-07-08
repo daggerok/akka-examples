@@ -1,6 +1,7 @@
-= another-akka-try
 
 //tag::content[]
+
+=== another-akka-try
 
 .test
 ----

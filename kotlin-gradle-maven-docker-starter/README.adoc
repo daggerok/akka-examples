@@ -1,6 +1,7 @@
-= Kotlin Gradle Maven Docker Starter image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
 
 //tag::content[]
+
+=== Kotlin Gradle Maven Docker Starter image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
 
 This is just an Akka kotlin gradle / maven / docker / starter project...
 
