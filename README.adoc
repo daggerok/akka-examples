@@ -6,12 +6,12 @@ This repository contains Akka playground projects examples.
 
 link:https://daggerok.github.io/akka-examples[Documentation]
 
-. link:./another-akka-try[ping-pong: yet another java gradle / maven docker akka jar...]
-. link:./java-gradle-maven-docker-starter[java (gradle / maven) starter in docker]
-. link:./kotlin-gradle-maven-docker-starter[kotlin (gradle / maven) starter in docker]
-. link:./scala-gradle-maven-docker-starter[scala (gradle / maven) starter in docker]
+- link:./another-akka-try[ping-pong: yet another java gradle / maven docker akka jar...]
+- link:./java-gradle-maven-docker-starter[java (gradle / maven) starter in docker]
+- link:./kotlin-gradle-maven-docker-starter[kotlin (gradle / maven) starter in docker]
+- link:./scala-gradle-maven-docker-starter[scala (gradle / maven) starter in docker]
 
 TODO:
-. spring-boot + akka link:https://www.linkedin.com/pulse/spring-boot-akka-part-1-aliaksandr-liakh[1] and link:https://www.linkedin.com/pulse/spring-boot-akka-part-2-aliaksandr-liakh[2]
+- spring-boot + akka link:https://www.linkedin.com/pulse/spring-boot-akka-part-1-aliaksandr-liakh[1] and link:https://www.linkedin.com/pulse/spring-boot-akka-part-2-aliaksandr-liakh[2]
 
 //end::content[]
