@@ -10,7 +10,7 @@ class HelloActor extends Actor {
   }
 }
 
-object HelloWorldApp {
+object HelloWorld {
   def main(args: Array[String]): Unit = {
     val helloSystem = ActorSystem("hello-actor-system")
     val helloActor = helloSystem.actorOf(Props[HelloActor], "hello-actor")
