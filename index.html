@@ -551,17 +551,18 @@ table.CodeRay td.code>pre{padding:0}
 <span id="author" class="author">Maksim Kostromin</span><br>
 <span id="email" class="email"><a href="mailto:daggerok@gmail.com">daggerok@gmail.com</a></span><br>
 <span id="revnumber">version 0.0.1,</span>
-<span id="revdate">2018-07-08 22:22:18 UTC</span>
+<span id="revdate">2018-07-08 22:24:42 UTC</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#implementation">1. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#java-gradle-maven-docker-starter-span-class-image-a-class-image-href-https-travis-ci-org-daggerok-akka-examples-img-src-https-travis-ci-org-daggerok-akka-examples-svg-branch-master-alt-build-status-a-span">1.1. Java Gradle Maven Docker Starter <span class="image"><a class="image" href="https://travis-ci.org/daggerok/akka-examples"><img src="https://travis-ci.org/daggerok/akka-examples.svg?branch=master" alt="Build Status"></a></span></a></li>
-<li><a href="#kotlin-gradle-maven-docker-starter-span-class-image-a-class-image-href-https-travis-ci-org-daggerok-akka-examples-img-src-https-travis-ci-org-daggerok-akka-examples-svg-branch-master-alt-build-status-a-span">1.2. Kotlin Gradle Maven Docker Starter <span class="image"><a class="image" href="https://travis-ci.org/daggerok/akka-examples"><img src="https://travis-ci.org/daggerok/akka-examples.svg?branch=master" alt="Build Status"></a></span></a></li>
-<li><a href="#akka">1.3. akka</a></li>
-<li><a href="#another-akka-try">1.4. another-akka-try</a></li>
+<li><a href="#scala-akka-sbt-idea">1.1. scala akka sbt IDEA</a></li>
+<li><a href="#java-gradle-maven-docker-starter">1.2. Java Gradle Maven Docker Starter</a></li>
+<li><a href="#kotlin-gradle-maven-docker-starter">1.3. Kotlin Gradle Maven Docker Starter</a></li>
+<li><a href="#akka">1.4. akka</a></li>
+<li><a href="#another-akka-try">1.5. another-akka-try</a></li>
 </ul>
 </li>
 <li><a href="#links">2. Links</a></li>
@@ -584,7 +585,97 @@ Akka playground projects</p>
 <h2 id="implementation"><a class="anchor" href="#implementation"></a>1. Implementation</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="java-gradle-maven-docker-starter-span-class-image-a-class-image-href-https-travis-ci-org-daggerok-akka-examples-img-src-https-travis-ci-org-daggerok-akka-examples-svg-branch-master-alt-build-status-a-span"><a class="anchor" href="#java-gradle-maven-docker-starter-span-class-image-a-class-image-href-https-travis-ci-org-daggerok-akka-examples-img-src-https-travis-ci-org-daggerok-akka-examples-svg-branch-master-alt-build-status-a-span"></a>1.1. Java Gradle Maven Docker Starter <span class="image"><a class="image" href="https://travis-ci.org/daggerok/akka-examples"><img src="https://travis-ci.org/daggerok/akka-examples.svg?branch=master" alt="Build Status"></a></span></h3>
+<h3 id="scala-akka-sbt-idea"><a class="anchor" href="#scala-akka-sbt-idea"></a>1.1. scala akka sbt IDEA</h3>
+<div class="listingblock">
+<div class="title">build, test and run</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">./sbtw clean compile test assembly # run
+ava -jar target/scala-2.12/*-assembly-*.jar</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Music Player</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">package daggerok.musicplayer
+
+import akka.actor.{Actor, ActorSystem, Props}
+import daggerok.MusicController.{PlayMsg, StopMsg}
+import daggerok.MusicPlayer.{StartMusicMsg, StopMusicMsg}
+
+object MusicController {
+  sealed trait MusicControllerMessage
+  case object PlayMsg extends MusicControllerMessage
+  case object StopMsg extends MusicControllerMessage
+
+  def props = Props[MusicControllerActor]
+}
+
+class MusicControllerActor extends Actor {
+  override def receive: Receive = {
+    case PlayMsg =&gt; println(&quot;playing music...&quot;)
+    case StopMsg =&gt; println(&quot;music is stopped&quot;)
+  }
+}
+
+object MusicPlayer {
+  sealed trait MusicPlayerMessage
+  case object StopMusicMsg extends MusicPlayerMessage
+  case object StartMusicMsg extends MusicPlayerMessage
+}
+
+class MusicPlayerActor extends Actor {
+  override def receive: Receive = {
+    case StopMusicMsg =&gt; println(&quot;I don't wanna stop!&quot;)
+    case StartMusicMsg =&gt;
+      val ctrlActor = context.actorOf(MusicController.props, &quot;ctrl-actor&quot;)
+      ctrlActor ! PlayMsg
+    case _ =&gt; println(&quot;received unknown message.&quot;)
+  }
+}
+
+object MusicPlayerApp {
+  def main(args: Array[String]): Unit = {
+    val system = ActorSystem(&quot;music-system&quot;)
+    val actor = system.actorOf(Props[MusicPlayerActor], &quot;mp-actor&quot;)
+
+    actor ! StartMusicMsg
+    actor ! StopMusicMsg
+    Thread.sleep(1000)
+    system.terminate()
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Hello World</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">package daggerok.helloworld
+
+import akka.actor.{Actor, ActorSystem, Props}
+
+case class HelloMessage(name: String)
+
+class HelloActor extends Actor {
+  override def receive: Receive = {
+    case HelloMessage(name) =&gt; println(s&quot;Hello, $name!&quot;)
+  }
+}
+
+object HelloWorldApp {
+  def main(args: Array[String]): Unit = {
+    val helloSystem = ActorSystem(&quot;hello-actor-system&quot;)
+    val helloActor = helloSystem.actorOf(Props[HelloActor], &quot;hello-actor&quot;)
+
+    helloActor ! HelloMessage(&quot;Максимко&quot;)
+    Thread.sleep(1000)
+    helloSystem.terminate()
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-gradle-maven-docker-starter"><a class="anchor" href="#java-gradle-maven-docker-starter"></a>1.2. Java Gradle Maven Docker Starter</h3>
 <div class="paragraph">
 <p>This is just an Akka java gradle / maven / docker / starter project&#8230;&#8203;</p>
 </div>
@@ -612,7 +703,7 @@ docker-compose up --build --force-recreate --remove-orphans</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="kotlin-gradle-maven-docker-starter-span-class-image-a-class-image-href-https-travis-ci-org-daggerok-akka-examples-img-src-https-travis-ci-org-daggerok-akka-examples-svg-branch-master-alt-build-status-a-span"><a class="anchor" href="#kotlin-gradle-maven-docker-starter-span-class-image-a-class-image-href-https-travis-ci-org-daggerok-akka-examples-img-src-https-travis-ci-org-daggerok-akka-examples-svg-branch-master-alt-build-status-a-span"></a>1.2. Kotlin Gradle Maven Docker Starter <span class="image"><a class="image" href="https://travis-ci.org/daggerok/akka-examples"><img src="https://travis-ci.org/daggerok/akka-examples.svg?branch=master" alt="Build Status"></a></span></h3>
+<h3 id="kotlin-gradle-maven-docker-starter"><a class="anchor" href="#kotlin-gradle-maven-docker-starter"></a>1.3. Kotlin Gradle Maven Docker Starter</h3>
 <div class="paragraph">
 <p>This is just an Akka kotlin gradle / maven / docker / starter project&#8230;&#8203;</p>
 </div>
@@ -643,7 +734,7 @@ docker-compose up --build --force-recreate --remove-orphans</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="akka"><a class="anchor" href="#akka"></a>1.3. akka</h3>
+<h3 id="akka"><a class="anchor" href="#akka"></a>1.4. akka</h3>
 <div class="paragraph">
 <p>generated using <a href="https://github.com/daggerok/generator-jvm">jvm</a> yeoman generator</p>
 </div>
@@ -659,7 +750,7 @@ docker-compose up --build --force-recreate --remove-orphans</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="another-akka-try"><a class="anchor" href="#another-akka-try"></a>1.4. another-akka-try</h3>
+<h3 id="another-akka-try"><a class="anchor" href="#another-akka-try"></a>1.5. another-akka-try</h3>
 <div class="listingblock">
 <div class="title">test</div>
 <div class="content">
@@ -721,7 +812,7 @@ java -jar target/*-all.jar</pre>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1<br>
-Last updated 2018-07-08 22:22:18 UTC
+Last updated 2018-07-08 22:24:42 UTC
 </div>
 </div>
 </body>
