@@ -30,7 +30,7 @@ script:
 - export parent=$(pwd)
 #
 - cd ${parent}/idea-scala-sbt-project
-- ./sbtw clean compile test assembly run
+- ./sbtw clean compile test assembly
 - java -jar target/scala-2.12/*-assembly-*.jar
 #
 - cd ${parent}/another-akka-try
