@@ -6,7 +6,8 @@
 .build, test and run
 [source,bash]
 ----
-./sbtw clean compile test run
+./sbtw clean compile test assembly run
+ava -jar target/scala-2.12/*-assembly-*.jar
 ----
 
 //end::content[]
