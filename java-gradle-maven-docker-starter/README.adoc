@@ -18,6 +18,6 @@ docker-compose up --build --force-recreate --remove-orphans
 
 links:
 
-. link:https://doc.akka.io/docs/akka/current/actors.html#creating-actors[Akka docs]
+- link:https://doc.akka.io/docs/akka/current/actors.html#creating-actors[Akka docs]
 
 //end::content[]

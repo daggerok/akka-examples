@@ -2,7 +2,7 @@
 
 //tag::content[]
 
-generated using link:https://github.com/daggerok/generator-daggerok-fatjar/[daggerok-fatjar] yeoman generator
+generated using link:https://github.com/daggerok/generator-jvm[jvm] yeoman generator
 
 .build
 ----

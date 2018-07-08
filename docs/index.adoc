@@ -12,9 +12,11 @@ Maksim Kostromin <daggerok@gmail.com>
 
 [discrete]
 == Introduction
+
 include::includes/Introduction.adoc[]
 
 == Gradle Maven Docker Starter
+
 include::../java-gradle-maven-docker-starter/README.adoc[tags=content]
 include::../kotlin-gradle-maven-docker-starter/README.adoc[tags=content]
 include::../scala-gradle-maven-docker-starter/README.adoc[tags=content]

@@ -18,7 +18,7 @@ docker-compose up --build --force-recreate --remove-orphans
 
 links:
 
-. link:https://kotlinlang.org/docs/reference/using-maven.html[kotlin with maven]
-. link:https://doc.akka.io/docs/akka/current/actors.html#creating-actors[Akka docs]
+- link:https://kotlinlang.org/docs/reference/using-maven.html[kotlin with maven]
+- link:https://doc.akka.io/docs/akka/current/actors.html#creating-actors[Akka docs]
 
 //end::content[]
