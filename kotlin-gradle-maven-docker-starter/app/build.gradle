@@ -1,9 +1,9 @@
 plugins {
-  id "application"
-  id "com.github.johnrengelman.shadow" version "2.0.2"
+  id 'application'
+  id 'com.github.johnrengelman.shadow' version '2.0.2'
 }
 
-mainClassName = "daggerok.AppKt"
+mainClassName = 'daggerok.AppKt'
 shadowJar.mustRunAfter jar
 jar.enabled = false
 
@@ -12,5 +12,5 @@ dependencies {
   compile "org.slf4j:slf4j-jdk14:$slf4jVersion"
   compile "com.typesafe.akka:akka-actor_2.12:$akkaVersion"
   testCompile "com.typesafe.akka:akka-testkit_2.12:$akkaVersion"
-  testCompile "junit:junit:4.12"
+  testCompile 'junit:junit:4.12'
 }

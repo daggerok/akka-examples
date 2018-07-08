@@ -1,9 +1,9 @@
 buildscript {
 
   ext {
-    akkaVersion = "2.5.8"
-    lombokVersion = "1.16.18"
-    slf4jVersion = "1.7.25"
+    akkaVersion = '2.5.8'
+    lombokVersion = '1.16.18'
+    slf4jVersion = '1.7.25'
   }
 
   repositories {
@@ -17,25 +17,25 @@ buildscript {
 
 allprojects {
 
-  apply plugin: "base"
-  apply plugin: "maven"
+  apply plugin: 'base'
+  apply plugin: 'maven'
 
-  group = "daggerok"
-  version = "0.0.1"
+  group = 'daggerok'
+  version = '0.0.1'
 
-  defaultTasks "clean", "build"
+  defaultTasks 'clean', 'build'
 }
 
 subprojects {
 
-  apply plugin: "java"
-  apply plugin: "com.github.johnrengelman.shadow"
+  apply plugin: 'java'
+  apply plugin: 'com.github.johnrengelman.shadow'
 
   sourceCompatibility = targetCompatibility = 1.8
 
   repositories {
     mavenLocal()
-    maven { url "http://repo.maven.apache.org/maven2" }
+    maven { url 'http://repo.maven.apache.org/maven2' }
   }
 
   dependencies {
