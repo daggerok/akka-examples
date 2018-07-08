@@ -1,7 +1,8 @@
+= scala akka sbt IDEA image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
 
 //tag::content[]
 
-=== scala akka sbt IDEA image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
+=== scala akka sbt IDEA
 
 .build, test and run
 [source,bash]

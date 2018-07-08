@@ -1,3 +1,4 @@
+= another-akka-try
 
 //tag::content[]
 

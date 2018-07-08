@@ -1,7 +1,8 @@
+= Java Gradle Maven Docker Starter image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
 
 //tag::content[]
 
-=== Java Gradle Maven Docker Starter image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
+=== Java Gradle Maven Docker Starter
 
 This is just an Akka java gradle / maven / docker / starter project...
 
