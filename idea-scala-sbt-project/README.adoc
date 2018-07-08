@@ -1,0 +1,12 @@
+
+//tag::content[]
+
+=== scala akka sbt IDEA image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
+
+.build, test and run
+[source,bash]
+----
+./sbtw clean compile test run
+----
+
+//end::content[]
