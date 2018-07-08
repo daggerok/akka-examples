@@ -6,8 +6,20 @@
 .build, test and run
 [source,bash]
 ----
-./sbtw clean compile test assembly run
+./sbtw clean compile test assembly # run
 ava -jar target/scala-2.12/*-assembly-*.jar
+----
+
+.Music Player
+[source,bash]
+----
+include::./src/main/scala/daggerok/musicplayer/MusicPlayerApp.scala[]
+----
+
+.Hello World
+[source,bash]
+----
+include::./src/main/scala/daggerok/helloworld/HelloWorldApp.scala[]
 ----
 
 //end::content[]

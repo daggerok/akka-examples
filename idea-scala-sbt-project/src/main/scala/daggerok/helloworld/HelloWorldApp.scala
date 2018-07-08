@@ -1,4 +1,4 @@
-package daggerok
+package daggerok.helloworld
 
 import akka.actor.{Actor, ActorSystem, Props}
 
@@ -10,7 +10,7 @@ class HelloActor extends Actor {
   }
 }
 
-object HelloWorld {
+object HelloWorldApp {
   def main(args: Array[String]): Unit = {
     val helloSystem = ActorSystem("hello-actor-system")
     val helloActor = helloSystem.actorOf(Props[HelloActor], "hello-actor")
