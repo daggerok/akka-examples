@@ -1,8 +1,8 @@
-package daggerok.supervision
+package daggerok.supervisor
 
 import akka.actor.SupervisorStrategy.{Escalate, Restart, Resume, Stop}
 import akka.actor.{Actor, ActorRef, ActorSystem, OneForOneStrategy, Props, SupervisorStrategy}
-import daggerok.supervision.API.{RestartError, ResumeError, StopError}
+import daggerok.supervisor.API.{RestartError, ResumeError, StopError}
 
 object API {
   sealed trait ErrorMessage extends RuntimeException
@@ -73,9 +73,9 @@ class Parent extends Actor {
   }
 }
 
-object Application {
+object SupervisorApp {
   def main(args: Array[String]): Unit = {
-    val system = ActorSystem("supervision-system")
+    val system = ActorSystem("supervisor-system")
     val parent = system.actorOf(Props[Parent], "parent")
 //    parent! "Stop"
 //    parent! "Resume"
