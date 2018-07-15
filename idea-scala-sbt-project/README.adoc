@@ -12,19 +12,19 @@ ava -jar target/scala-2.12/*-assembly-*.jar
 ----
 
 .Tell / Ask to actors
-[source,bash]
+[source,scala]
 ----
 include::./src/main/scala/daggerok/tellandaskactors/TellAndAskApp.scala[]
 ----
 
 .Music Player
-[source,bash]
+[source,scala]
 ----
 include::./src/main/scala/daggerok/musicplayer/MusicPlayerApp.scala[]
 ----
 
 .Hello World
-[source,bash]
+[source,scala]
 ----
 include::./src/main/scala/daggerok/helloworld/HelloWorldApp.scala[]
 ----
