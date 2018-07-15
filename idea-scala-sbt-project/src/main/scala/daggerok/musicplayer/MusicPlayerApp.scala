@@ -1,8 +1,8 @@
 package daggerok.musicplayer
 
 import akka.actor.{Actor, ActorSystem, Props}
-import daggerok.MusicController.{PlayMsg, StopMsg}
-import daggerok.MusicPlayer.{StartMusicMsg, StopMusicMsg}
+import daggerok.musicplayer.MusicController.{PlayMsg, StopMsg}
+import daggerok.musicplayer.MusicPlayer.{StartMusicMsg, StopMusicMsg}
 
 object MusicController {
   sealed trait MusicControllerMessage
