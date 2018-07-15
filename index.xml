@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2018-07-15 02:24:52 UTC</date>
+<date>2018-07-15 02:43:46 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2018-07-15 02:24:52 UTC</date>
+<date>2018-07-15 02:43:46 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -68,7 +68,7 @@ ava -jar target/scala-2.12/*-assembly-*.jar</programlisting>
 <formalpara>
 <title>Tell / Ask to actors</title>
 <para>
-<programlisting language="bash" linenumbering="unnumbered">package daggerok.tellandaskactors
+<programlisting language="scala" linenumbering="unnumbered">package daggerok.tellandaskactors
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.util.Timeout
@@ -155,7 +155,7 @@ object TellAndAskApp {
 <formalpara>
 <title>Music Player</title>
 <para>
-<programlisting language="bash" linenumbering="unnumbered">package daggerok.musicplayer
+<programlisting language="scala" linenumbering="unnumbered">package daggerok.musicplayer
 
 import akka.actor.{Actor, ActorSystem, Props}
 import daggerok.musicplayer.MusicController.{PlayMsg, StopMsg}
@@ -208,7 +208,7 @@ object MusicPlayerApp {
 <formalpara>
 <title>Hello World</title>
 <para>
-<programlisting language="bash" linenumbering="unnumbered">package daggerok.helloworld
+<programlisting language="scala" linenumbering="unnumbered">package daggerok.helloworld
 
 import akka.actor.{Actor, ActorSystem, Props}
 
