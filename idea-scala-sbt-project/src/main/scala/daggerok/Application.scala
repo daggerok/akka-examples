@@ -1,8 +1,8 @@
-package daggerok.supervision
+package daggerok
 
 import akka.actor.SupervisorStrategy.{Escalate, Restart, Resume, Stop}
 import akka.actor.{Actor, ActorRef, ActorSystem, OneForOneStrategy, Props, SupervisorStrategy}
-import daggerok.supervision.API.{RestartError, ResumeError, StopError}
+import daggerok.API.{RestartError, ResumeError, StopError}
 
 object API {
   sealed trait ErrorMessage extends RuntimeException
