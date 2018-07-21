@@ -69,7 +69,7 @@
           <relativeBaseDir>true</relativeBaseDir>
           <headerFooter>true</headerFooter>
           <imagesDir>images</imagesDir>
-          <sourceHighlighter>coderay</sourceHighlighter>
+          <sourceHighlighter>highlightjs</sourceHighlighter>
           <attributes>
             <toc>left</toc>
             <linkcss>false</linkcss>
