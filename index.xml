@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2018-07-15 02:43:46 UTC</date>
+<date>2018-07-21 16:03:57 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2018-07-15 02:43:46 UTC</date>
+<date>2018-07-21 16:03:57 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -63,6 +63,97 @@ Akka playground projects</simpara>
 <para>
 <programlisting language="bash" linenumbering="unnumbered">./sbtw clean compile test assembly # run
 ava -jar target/scala-2.12/*-assembly-*.jar</programlisting>
+</para>
+</formalpara>
+<formalpara>
+<title>Supervisor actors</title>
+<para>
+<programlisting language="scala" linenumbering="unnumbered">package daggerok.supervisor
+
+import akka.actor.SupervisorStrategy.{Escalate, Restart, Resume, Stop}
+import akka.actor.{Actor, ActorRef, ActorSystem, OneForOneStrategy, Props, SupervisorStrategy}
+import daggerok.supervisor.API.{RestartError, ResumeError, StopError}
+
+object API {
+  sealed trait ErrorMessage extends RuntimeException
+  case object StopError extends ErrorMessage
+  case object ResumeError extends ErrorMessage
+  case object RestartError extends ErrorMessage
+}
+
+class Child extends Actor {
+
+  override def preStart(): Unit = {
+    println("Child: preStart")
+    Thread.sleep(100)
+    super.preStart()
+  }
+
+  override def preRestart(reason: Throwable, message: Option[Any]): Unit = {
+    println("Child: preRestart")
+    Thread.sleep(100)
+    super.preRestart(reason, message)
+  }
+
+  override def postRestart(reason: Throwable): Unit = {
+    println("Child: postRestart")
+    Thread.sleep(100)
+    super.postRestart(reason)
+  }
+
+  override def postStop(): Unit = {
+    println("Child: postStop")
+    Thread.sleep(100)
+    super.postStop()
+  }
+
+  override def receive: Receive = {
+    case "Stop" =&gt; throw StopError
+    case "Resume" =&gt; throw ResumeError
+    case "Restart" =&gt; throw RestartError
+    case _ =&gt; throw new RuntimeException
+  }
+}
+
+class Parent extends Actor {
+
+  var childRef: ActorRef = _
+
+  import scala.concurrent.duration._ // seconds
+  override def supervisorStrategy: SupervisorStrategy =
+    OneForOneStrategy(maxNrOfRetries = 5, withinTimeRange = 1 second) {
+      case StopError =&gt; Stop
+      case ResumeError =&gt; Resume
+      case RestartError =&gt; Restart
+      case _: RuntimeException =&gt; Escalate
+    }
+
+  override def preStart(): Unit = {
+    println("Parent: preStart")
+    childRef = context.actorOf(Props[Child], "child")
+    Thread.sleep(100)
+    super.preStart()
+  }
+
+  override def receive: Receive = {
+    case message =&gt;
+      println(s"Parent message: $message")
+      childRef ! message
+      Thread.sleep(100)
+  }
+}
+
+object SupervisorApp {
+  def main(args: Array[String]): Unit = {
+    val system = ActorSystem("supervisor-system")
+    val parent = system.actorOf(Props[Parent], "parent")
+//    parent! "Stop"
+//    parent! "Resume"
+    parent! "Restart"
+    Thread.sleep(1000)
+    system.terminate()
+  }
+}</programlisting>
 </para>
 </formalpara>
 <formalpara>
