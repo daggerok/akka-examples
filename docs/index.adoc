@@ -4,11 +4,15 @@ Maksim Kostromin <daggerok@gmail.com>
 :toc:
 :revnumber: {project-version}
 :example-caption!:
-:icons: font
+:doctype: book
 :toc: left
 :numbered:
 :github_url: https://github.com/daggerok/akka-examples
 :github_branch_prefix: {github_url}/tree
+:icons: font
+:hide-uri-scheme:
+:revnumber: {project-version}
+:source-highlighter: highlightjs
 
 [discrete]
 == Introduction
