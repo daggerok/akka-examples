@@ -39,7 +39,8 @@
               <goal>process-asciidoc</goal>
             </goals>
             <configuration>
-              <backend>pdf</backend><sourceHighlighter>coderay</sourceHighlighter>
+              <backend>pdf</backend>
+              <sourceHighlighter>coderay</sourceHighlighter>
             </configuration>
           </execution>
           <execution>
