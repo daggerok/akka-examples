@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2019-04-17 11:28:18 UTC</date>
+<date>2019-04-17 11:47:37 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2019-04-17 11:28:18 UTC</date>
+<date>2019-04-17 11:47:37 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -59,6 +59,66 @@ Akka playground projects</simpara>
 </preface>
 <chapter xml:id="implementation">
 <title>Implementation</title>
+
+</chapter>
+<chapter xml:id="basic-getting-started-java-12">
+<title>basic getting started (java 12)</title>
+<programlisting language="java" linenumbering="unnumbered">@Value(staticConstructor = "withBody")
+class Message {
+  private final String body;
+}
+
+class HelloWorld extends AbstractLoggingActor {
+
+  @Override
+  public Receive createReceive() {
+    return receiveBuilder().match(Message.class, message -&gt; onMessage(message))
+                           .build();
+  }
+
+  private void onMessage(Message message) {
+    log().info("received {}", message);
+  }
+}
+
+@Configuration
+class AkkaCfg {
+
+  @Bean
+  ActorSystem helloSystem() {
+    return ActorSystem.create("hello-world");
+  }
+
+  @Bean
+  Props helloProps() {
+    return Props.create(HelloWorld.class);
+  }
+
+  @Bean
+  ActorRef helloRef(ActorSystem helloSystem, Props helloProps) {
+    return helloSystem.actorOf(helloProps, "hello-actor");
+  }
+}
+
+@Configuration
+@ComponentScan(basePackageClasses = App.class)
+public class App {
+
+  public static void main(String[] args) {
+    var ctx = new AnnotationConfigApplicationContext(App.class);
+    var helloRef = ctx.getBean(ActorRef.class);
+
+    helloRef.tell(Message.withBody("Max"), ActorRef.noSender());
+    helloRef.tell(Message.withBody("Bob"), ActorRef.noSender());
+    helloRef.tell(Message.withBody("Everyone"), ActorRef.noSender());
+
+    Try.run(() -&gt; TimeUnit.SECONDS.sleep(1))
+       .andFinally(() -&gt; ctx.getBean(ActorSystem.class).terminate());
+  }
+}</programlisting>
+</chapter>
+<chapter xml:id="others">
+<title>others</title>
 <section xml:id="scala-akka-sbt-idea">
 <title>scala akka sbt IDEA</title>
 <formalpara>
