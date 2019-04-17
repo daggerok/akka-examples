@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2019-04-07 19:09:16 UTC</date>
+<date>2019-04-17 09:31:58 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2019-04-07 19:09:16 UTC</date>
+<date>2019-04-17 09:31:58 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -35,6 +35,9 @@ Akka playground projects</simpara>
 <simpara>This repository contains Akka playground projects examples.</simpara>
 <simpara><link xl:href="https://daggerok.github.io/akka-examples">Documentation</link></simpara>
 <itemizedlist>
+<listitem>
+<simpara><link xl:href="./hello-world/">Basic actor</link></simpara>
+</listitem>
 <listitem>
 <simpara><link xl:href="./idea-scala-sbt-project">Learning Akka projects</link></simpara>
 </listitem>
