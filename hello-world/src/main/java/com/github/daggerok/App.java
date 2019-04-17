@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.TimeUnit;
 
+// tag::content[]
 @Value(staticConstructor = "withBody")
 class Message {
   private final String body;
@@ -66,3 +67,4 @@ public class App {
        .andFinally(() -> ctx.getBean(ActorSystem.class).terminate());
   }
 }
+// end::content[]
