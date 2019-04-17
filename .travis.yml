@@ -1,75 +1,95 @@
 service:
-- docker
+  - docker
 
 env:
   global:
-  - TERM=dumb
-  - secure: rbv5UwJyAECUi3AYqfzcmX0aXvzWjyuBtyDmvfRnNm2bDyal5dy16hxOiTPSNv0lsZ/2s7oiRxx9z8dcXf2p/Ff4VGFJvRpgFaqAa1ual93kyF0JED4hGoheEuTKEHnqYJcZRIqGgJioPkXlx2Oj0oUuaK9ncbl2SjLKHtvhbf6spBwp4CS7/65l6Bvpo9mc+d9llb3pJ2YG2FEsy43bxrUwu3xv9qYnRyGUfTpmGyvHDse0qaulzhHyaY/qs4t6A19GGcG53CTK4fCirAHiZEkElpv5dCMZU+pZWloxsMPE3zgJWJE3u6GuWZz0jfDmcf7mUZgt+Ty6BKeQn+Ef48YKqLliCnZ6je/0P5R6Yrk3XYkxgsHNHq+0V/9g9Xkv5lC3LJHecgVz/hiTKsMAEfEmVMCVL4aLYfYgnzPn1HjxOvt4UY07uVl0Sl7ncU3Jez6zIpQDJz/+ms3LJx8VeTHbnE4cn4Aft+LbQR5Z5JjKOCcCz+e+nx8nHumHUcpLnZWDl+pDdI9r4dN870sFdJMVeI+g9uoSbMpW5zN6TIAZBY3FyIeCbZI2Xh95ZyGi5xkXJ+G2bqYbnTgADE88Ej7pDzklmfH5vUzNfjY8b1F620i7xI1AmzwEWBGuJw9yu9AUdGcDSnLkAH5pg0VnoT4vb6y3Oa9C2msqCkoqiZw=
+    - TERM=dumb
+    - secure: rbv5UwJyAECUi3AYqfzcmX0aXvzWjyuBtyDmvfRnNm2bDyal5dy16hxOiTPSNv0lsZ/2s7oiRxx9z8dcXf2p/Ff4VGFJvRpgFaqAa1ual93kyF0JED4hGoheEuTKEHnqYJcZRIqGgJioPkXlx2Oj0oUuaK9ncbl2SjLKHtvhbf6spBwp4CS7/65l6Bvpo9mc+d9llb3pJ2YG2FEsy43bxrUwu3xv9qYnRyGUfTpmGyvHDse0qaulzhHyaY/qs4t6A19GGcG53CTK4fCirAHiZEkElpv5dCMZU+pZWloxsMPE3zgJWJE3u6GuWZz0jfDmcf7mUZgt+Ty6BKeQn+Ef48YKqLliCnZ6je/0P5R6Yrk3XYkxgsHNHq+0V/9g9Xkv5lC3LJHecgVz/hiTKsMAEfEmVMCVL4aLYfYgnzPn1HjxOvt4UY07uVl0Sl7ncU3Jez6zIpQDJz/+ms3LJx8VeTHbnE4cn4Aft+LbQR5Z5JjKOCcCz+e+nx8nHumHUcpLnZWDl+pDdI9r4dN870sFdJMVeI+g9uoSbMpW5zN6TIAZBY3FyIeCbZI2Xh95ZyGi5xkXJ+G2bqYbnTgADE88Ej7pDzklmfH5vUzNfjY8b1F620i7xI1AmzwEWBGuJw9yu9AUdGcDSnLkAH5pg0VnoT4vb6y3Oa9C2msqCkoqiZw=
 
 language: java
-jdk: oraclejdk8
+#jdk: openjdk8
+jdk: openjdk-ea
 
 addons:
   apt:
     update: true
     packages:
-    - docker-ce
-    - python-pip
-    - jq
-    - curl
-    - libxml2-utils
+      - docker-ce
+      - python-pip
+      - jq
+      - curl
+      - libxml2-utils
 
 install: true
 before_install:
-# install latest docker
-- sudo pip install docker-compose httpie
-- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
-- stop_any 5432 5672 27017 8080
+  # install latest docker
+  - sudo pip install --upgrade docker-compose httpie >/dev/null 2>&1
+  - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+  - stop_any 5432 5672 27017 8080
 
 script:
-- export parent=$(pwd)
-#
-- cd ${parent}/idea-scala-sbt-project
-- ./sbtw clean compile test assembly
-- java -jar target/scala-2.12/*-assembly-*.jar
-#
-- cd ${parent}/another-akka-try
-- bash ./gradlew clean installDist >/dev/null
-- bash ./build/install/another-akka-try/bin/another-akka-try
-- bash ./mvnw clean package com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
-- bash ./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down
-#
-- >
-  for path in \
-    scala-gradle-maven-docker-starter \
-    kotlin-gradle-maven-docker-starter \
-    java-gradle-maven-docker-starter \
-  ; do
+  - export parent=$(pwd)
+  # https://github.com/sormuras/bach#install-jdksh
+  # https://docs.travis-ci.com/user/languages/java/
+  #
+  # jdk 12
+  #
+  - cd ${parent}/hello-world
+  - ./mvnw clean package
+  - java -jar ./target/*-all.jar
+  - ./gradlew clean build fatJar
+  - java -jar ./build/libs/*-all.jar
+  #
+  # jdk 8
+  #
+  #- jdk_switcher use oraclejdk8
+  - jdk_switcher use openjdk8
+  #
+  - cd ${parent}/idea-scala-sbt-project
+  - ./sbtw clean compile test assembly
+  - java -jar target/scala-2.12/*-assembly-*.jar
+  #
+  - cd ${parent}/another-akka-try
+  - bash ./gradlew clean installDist >/dev/null
+  - bash ./build/install/another-akka-try/bin/another-akka-try
+  - bash ./mvnw clean package com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
+  - bash ./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down
+  #
+  - >
+    for path in \
+      scala-gradle-maven-docker-starter \
+      kotlin-gradle-maven-docker-starter \
+      java-gradle-maven-docker-starter \
+    ; do
 
-    cd ${parent}/${path}
+      cd ${parent}/${path}
 
-    bash mvnw >/dev/null
-    bash gradlew >/dev/null
-    docker-compose build --force-rm --no-cache --pull
-    docker-compose up --force-recreate --remove-orphans
-    docker-compose down -v
-  done;
+      bash mvnw >/dev/null
+      bash gradlew >/dev/null
+      docker-compose build --force-rm --no-cache --pull
+      docker-compose up --force-recreate --remove-orphans
+      docker-compose down -v
+    done;
 
-- docker system prune -af --volumes
+#  - docker system prune -af --volumes
 
 before_cache:
-- bash -c 'for item in $(find ~/.gradle -name "*.lock"); do sudo rm -rf $item ; done'
+  - bash -c 'for item in $(find ~/.gradle -name "*.lock") ; do sudo rm -rf $item ; done'
 
 cache:
+  pip: true
+  packages: true
   directories:
-  - $HOME/.m2
-  - $HOME/.sbt
-  - $HOME/.gradle
-  - $HOME/.docker
+    - $HOME/.m2
+    - $HOME/.sbt
+    - $HOME/.ivy
+    - $HOME/.gradle
+    - $HOME/.docker
+    - $HOME/openjdk*
 
 before_deploy:
-- cd ${parent}/
-- ./mvnw
+  - cd ${parent}
+  - ./mvnw
 
 deploy:
   provider: pages
