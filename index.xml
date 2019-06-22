@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2019-06-22 13:08:48 UTC</date>
+<date>2019-06-22 15:17:53 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2019-06-22 13:08:48 UTC</date>
+<date>2019-06-22 15:17:53 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -125,7 +125,7 @@ public class App {
 <title>build, test and run</title>
 <para>
 <programlisting language="bash" linenumbering="unnumbered">./sbtw clean compile test assembly # run
-ava -jar target/scala-2.12/*-assembly-*.jar</programlisting>
+java -jar target/scala-2.12/*-assembly-*.jar</programlisting>
 </para>
 </formalpara>
 <formalpara>
