@@ -13,9 +13,7 @@ _build_ fat jar:
 ```bash
 ./sbtw clean assembly
 # ...
-[info] Packaging /path/to/a-simple-example/target/scala-2.13/a-simple-example-assembly-0.1.jar ...
-# ...
-java -jar ./target/scala-2.13/*assembly*.jar
+java -jar ./target/scala-*/*-assembly-*.jar
 ```
 
 resources:
