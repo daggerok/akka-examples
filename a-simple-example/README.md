@@ -45,6 +45,8 @@ create _project/assembly.sbt_ file:
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.9")
 ```
 
+see: https://github.com/sbt/sbt-assembly
+
 update _build.sbt_ file:
 
 ```sbtshell
