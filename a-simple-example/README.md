@@ -5,7 +5,7 @@ A simple akka getting started example quickly created in idea IDE (sbt wrapper, 
 
 minimal _build.sbt_ file:
 
-```sbtshell
+```scala
 name := "a-simple-example"
 
 version := "0.1"
@@ -41,15 +41,13 @@ _test_ and _run_ app:
 
 create _project/assembly.sbt_ file:
 
-```sbtshell
+```scala
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.9")
 ```
 
-see: https://github.com/sbt/sbt-assembly
-
 update _build.sbt_ file:
 
-```sbtshell
+```scala
 lazy val commonSettings = Seq(
   organization := "com.github.daggerok",
   scalaVersion := "2.12.6",
@@ -73,3 +71,8 @@ _build_ fat jar:
 # ...
 java -jar ./target/scala-2.13/*assembly*.jar
 ```
+
+resources:
+
+* [sbt-assembly plugin](https://github.com/sbt/sbt-assembly)
+* [Creating Scala Fat Jars on SBT with sbt-assembly Plugin](http://queirozf.com/entries/creating-scala-fat-jars-for-spark-on-sbt-with-sbt-assembly-plugin)
