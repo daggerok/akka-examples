@@ -67,14 +67,14 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/a-counter-example && ./sbtw run
         - cd $TRAVIS_BUILD_DIR/a-counter-example && ./sbtw clean assembly
         - java -jar $TRAVIS_BUILD_DIR/a-counter-example/target/scala-*/*-assembly-*.jar
-    - stage: test
-      jdk: openjdk8
-      name: a-self-example openjdk8
-      script:
-        - cd $TRAVIS_BUILD_DIR/a-self-example && ./sbtw clean test
-        - cd $TRAVIS_BUILD_DIR/a-self-example && ./sbtw run
-        - cd $TRAVIS_BUILD_DIR/a-self-example && ./sbtw clean assembly
-        - java -jar $TRAVIS_BUILD_DIR/a-self-example/target/scala-*/*-assembly-*.jar
+#    - stage: test
+#      jdk: openjdk8
+#      name: a-self-example openjdk8
+#      script:
+#        - cd $TRAVIS_BUILD_DIR/a-self-example && ./sbtw clean test
+#        - cd $TRAVIS_BUILD_DIR/a-self-example && ./sbtw run
+#        - cd $TRAVIS_BUILD_DIR/a-self-example && ./sbtw clean assembly
+#        - java -jar $TRAVIS_BUILD_DIR/a-self-example/target/scala-*/*-assembly-*.jar
     - stage: test
       jdk: openjdk11
       name: a-self-example openjdk11
@@ -83,14 +83,14 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/a-self-example && ./sbtw run
         - cd $TRAVIS_BUILD_DIR/a-self-example && ./sbtw clean assembly
         - java -jar $TRAVIS_BUILD_DIR/a-self-example/target/scala-*/*-assembly-*.jar
-    - stage: test
-      jdk: openjdk8
-      name: a-logger-example openjdk8
-      script:
-        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean test
-        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw run
-        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean assembly
-        - java -jar $TRAVIS_BUILD_DIR/a-logger-example/target/scala-*/*-assembly-*.jar
+#    - stage: test
+#      jdk: openjdk8
+#      name: a-logger-example openjdk8
+#      script:
+#        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean test
+#        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw run
+#        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean assembly
+#        - java -jar $TRAVIS_BUILD_DIR/a-logger-example/target/scala-*/*-assembly-*.jar
     - stage: test
       jdk: openjdk11
       name: a-logger-example openjdk11
@@ -99,14 +99,14 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw run
         - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean assembly
         - java -jar $TRAVIS_BUILD_DIR/a-logger-example/target/scala-*/*-assembly-*.jar
-    - stage: test
-      jdk: openjdk8
-      name: a-ping-pong-example openjdk8
-      script:
-        - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw clean test
-        - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw run
-        - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw clean assembly
-        - java -jar $TRAVIS_BUILD_DIR/a-ping-pong-example/target/scala-*/*-assembly-*.jar
+#    - stage: test
+#      jdk: openjdk8
+#      name: a-ping-pong-example openjdk8
+#      script:
+#        - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw clean test
+#        - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw run
+#        - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw clean assembly
+#        - java -jar $TRAVIS_BUILD_DIR/a-ping-pong-example/target/scala-*/*-assembly-*.jar
     - stage: test
       jdk: openjdk11
       name: a-ping-pong-example openjdk11
@@ -115,14 +115,14 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw run
         - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw clean assembly
         - java -jar $TRAVIS_BUILD_DIR/a-ping-pong-example/target/scala-*/*-assembly-*.jar
-    - stage: test
-      jdk: openjdk8
-      name: a-simple-example openjdk8
-      script:
-        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean test
-        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw run
-        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean assembly
-        - java -jar $TRAVIS_BUILD_DIR/a-simple-example/target/scala-*/*-assembly-*.jar
+#    - stage: test
+#      jdk: openjdk8
+#      name: a-simple-example openjdk8
+#      script:
+#        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean test
+#        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw run
+#        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean assembly
+#        - java -jar $TRAVIS_BUILD_DIR/a-simple-example/target/scala-*/*-assembly-*.jar
     - stage: test
       jdk: openjdk11
       name: a-simple-example openjdk11
@@ -147,12 +147,10 @@ jobs:
       jdk: openjdk8
       name: idea-scala-sbt-project
       script:
-        ##
         ## jdk 8
         ##
         ##- jdk_switcher use oraclejdk8
         #- jdk_switcher use openjdk8
-        ##
         - cd ${parent}/idea-scala-sbt-project
         - ./sbtw clean compile test assembly
         - java -jar target/scala-2.12/*-assembly-*.jar
@@ -160,7 +158,6 @@ jobs:
       jdk: openjdk8
       name: another-akka-try
       script:
-        #
         - cd ${parent}/another-akka-try
         - bash ./gradlew clean installDist >/dev/null
         - bash ./build/install/another-akka-try/bin/another-akka-try
@@ -170,7 +167,6 @@ jobs:
       jdk: openjdk8
       name: anothers...
       script:
-        #
         - >
           for path in \
             scala-gradle-maven-docker-starter \
