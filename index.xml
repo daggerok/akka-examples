@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2019-06-22 17:16:43 UTC</date>
+<date>2019-06-22 21:47:58 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2019-06-22 17:16:43 UTC</date>
+<date>2019-06-22 21:47:58 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -35,6 +35,21 @@ Akka playground projects</simpara>
 <simpara>This repository contains Akka playground projects examples.</simpara>
 <simpara><link xl:href="https://daggerok.github.io/akka-examples">Documentation</link></simpara>
 <itemizedlist>
+<listitem>
+<simpara><link xl:href="./a-bank-account-example/">bank account</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="./a-counter-example/">counter</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="./a-self-example/">send message to self</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="./a-ping-pong-example/">ping-pong</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="./a-logger-example/">Logger sbt akka starter</link></simpara>
+</listitem>
 <listitem>
 <simpara><link xl:href="./a-simple-example/">Simplest sbt akka starter</link></simpara>
 </listitem>
