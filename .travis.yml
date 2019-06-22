@@ -97,12 +97,12 @@ jobs:
             kotlin-gradle-maven-docker-starter \
             java-gradle-maven-docker-starter \
           ; do
-            cd ${parent}/${path}
-            bash mvnw >/dev/null
-            bash gradlew >/dev/null
-            docker-compose build --force-rm --no-cache --pull
-            docker-compose up --force-recreate --remove-orphans
-            docker-compose down -v
+            cd ${parent}/${path} ;
+            bash mvnw >/dev/null ;
+            bash gradlew >/dev/null ;
+            docker-compose build --force-rm --no-cache --pull ;
+            docker-compose up --force-recreate --remove-orphans ;
+            docker-compose down -v ;
           done;
       #  - docker system prune -af --volumes
     - stage: deploy
