@@ -1,4 +1,4 @@
-# A Ping Pong Example
+# A Simple Logger Example
 A simple akka getting started example quickly created in idea IDE (sbt wrapper, scala 2.13, akka 2.6.x + testkit, scalatest, scalactic)
 
 _test_ and _run_ app:

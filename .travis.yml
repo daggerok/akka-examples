@@ -53,6 +53,22 @@ jobs:
   include:
     - stage: test
       jdk: openjdk8
+      name: a-logger-example openjdk8
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-logger-example/target/scala-*/*-assembly-*.jar
+    - stage: test
+      jdk: openjdk11
+      name: a-logger-example openjdk11
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-logger-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-logger-example/target/scala-*/*-assembly-*.jar
+    - stage: test
+      jdk: openjdk8
       name: a-ping-pong-example openjdk8
       script:
         - cd $TRAVIS_BUILD_DIR/a-ping-pong-example && ./sbtw clean test
