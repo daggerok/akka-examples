@@ -131,18 +131,18 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw run
         - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean assembly
         - java -jar $TRAVIS_BUILD_DIR/a-simple-example/target/scala-*/*-assembly-*.jar
-    - stage: test
-      jdk: openjdk-ea
-      name: hello-world
-      script:
-        ##
-        ## jdk 12
-        ##
-        - cd ${parent}/hello-world
-        - ./mvnw clean package
-        - java -jar ./target/*-all.jar
-        - ./gradlew clean build fatJar
-        - java -jar ./build/libs/*-all.jar
+#    - stage: test
+#      jdk: openjdk-ea
+#      name: hello-world
+#      script:
+#        ##
+#        ## jdk 12
+#        ##
+#        - cd ${parent}/hello-world
+#        - ./mvnw clean package
+#        - java -jar ./target/*-all.jar
+#        - ./gradlew clean build fatJar
+#        - java -jar ./build/libs/*-all.jar
     - stage: test
       jdk: openjdk8
       name: idea-scala-sbt-project

@@ -6,7 +6,13 @@ This repository contains Akka playground projects examples.
 
 link:https://daggerok.github.io/akka-examples[Documentation]
 
+- link:./a-bank-account-example/[bank account]
+- link:./a-counter-example/[counter]
+- link:./a-self-example/[send message to self]
+- link:./a-ping-pong-example/[ping-pong]
+- link:./a-logger-example/[Logger sbt akka starter]
 - link:./a-simple-example/[Simplest sbt akka starter]
+
 - link:./hello-world/[Basic actor]
 - link:./idea-scala-sbt-project[Learning Akka projects]
 - link:./another-akka-try[ping-pong: yet another java gradle / maven docker akka jar...]
