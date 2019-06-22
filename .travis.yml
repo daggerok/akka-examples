@@ -52,6 +52,30 @@ stages:
 jobs:
   include:
     - stage: test
+      jdk: openjdk8
+      name: a-simple-example openjdk8
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-simple-example/target/scala-*/*-assembly-*.jar
+    - stage: test
+      jdk: openjdk11
+      name: a-simple-example openjdk11
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-simple-example/target/scala-*/*-assembly-*.jar
+    - stage: test
+      jdk: openjdk-ea
+      name: a-simple-example openjdk-ea
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-simple-example/target/scala-*/*-assembly-*.jar
+    - stage: test
       jdk: openjdk-ea
       name: hello-world
       script:

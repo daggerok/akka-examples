@@ -8,7 +8,7 @@
 [source,bash]
 ----
 ./sbtw clean compile test assembly # run
-ava -jar target/scala-2.12/*-assembly-*.jar
+java -jar target/scala-2.12/*-assembly-*.jar
 ----
 
 .Supervisor actors
