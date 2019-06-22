@@ -52,6 +52,14 @@ stages:
 jobs:
   include:
     - stage: test
+      jdk: openjdk11
+      name: a-counter-example openjdk8
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-counter-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-counter-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-counter-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-counter-example/target/scala-*/*-assembly-*.jar
+    - stage: test
       jdk: openjdk8
       name: a-self-example openjdk8
       script:
