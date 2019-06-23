@@ -31,17 +31,13 @@ class Patent extends Actor {
 }
 
 object Main extends App {
-  val system = ActorSystem("actor-selection-system")
+  val system = ActorSystem("parent-child-system")
   val parent: ActorRef = system.actorOf(Props[Patent], "parent")
 
   import Patent._
   parent ! CreateChildActor("child")
-
-  val child = system actorSelection "/user/parent/child"
-  child ! TellToChild("Direct hello!")
-
-  val notFoundActor = system actorSelection "/user/parent/not-found-actor"
-  notFoundActor ! TellToChild("This message should be delivered to death-letter mailbox...")
+  parent ! "Hola!"
+  parent ! TellToChild("Hello!")
 
   system.terminate()
 }

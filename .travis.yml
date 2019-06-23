@@ -52,8 +52,17 @@ stages:
 jobs:
   include:
     - stage: test
-      jdk: openjdk-ea
-      name: an-actor-selection-example
+      jdk: openjdk12
+      name: a-distributed-word-counter-example openjdk12
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-distributed-word-counter-example && java -version
+        - cd $TRAVIS_BUILD_DIR/a-distributed-word-counter-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-distributed-word-counter-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-distributed-word-counter-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-distributed-word-counter-example/target/scala-*/*-assembly-*.jar
+    - stage: test
+      jdk: openjdk11
+      name: an-actor-selection-example openjdk11
       script:
         - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && java -version
         - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && ./sbtw clean test
@@ -62,9 +71,9 @@ jobs:
         - java -jar $TRAVIS_BUILD_DIR/an-actor-selection-example/target/scala-*/*-assembly-*.jar
     - stage: test
       jdk: openjdk-ea
-      name: hello-world
+      #jdk: openjdk12
+      name: hello-world openjdk-ea
       script:
-        # jdk 12
         - cd ${parent}/hello-world
         - ./mvnw clean package
         - java -jar ./target/*-all.jar
@@ -159,19 +168,28 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/a-simple-example && ./sbtw clean assembly
         - java -jar $TRAVIS_BUILD_DIR/a-simple-example/target/scala-*/*-assembly-*.jar
     - stage: test
-      jdk: openjdk8
-      name: idea-scala-sbt-project
+      jdk: openjdk11
+      name: idea-scala-sbt-project openjdk11
       script:
         ## jdk 8
-        ##
         ##- jdk_switcher use oraclejdk8
         #- jdk_switcher use openjdk8
         - cd ${parent}/idea-scala-sbt-project
         - ./sbtw clean compile test assembly
-        - java -jar target/scala-2.12/*-assembly-*.jar
+        - java -jar target/scala-*/*-assembly-*.jar
+#    - stage: test
+#      jdk: openjdk8
+#      name: idea-scala-sbt-project openjdk8
+#      script:
+#        ## jdk 8
+#        ##- jdk_switcher use oraclejdk8
+#        #- jdk_switcher use openjdk8
+#        - cd ${parent}/idea-scala-sbt-project
+#        - ./sbtw clean compile test assembly
+#        - java -jar target/scala-*/*-assembly-*.jar
     - stage: test
       jdk: openjdk8
-      name: another-akka-try
+      name: another-akka-try openjdk8
       script:
         - cd ${parent}/another-akka-try
         - bash ./gradlew clean installDist >/dev/null
@@ -180,25 +198,38 @@ jobs:
         - bash ./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down
     - stage: test
       jdk: openjdk8
-      name: anothers...
+      name: scala-gradle-maven-docker-starter openjdk8
       script:
-        - >
-          for path in \
-            scala-gradle-maven-docker-starter \
-            kotlin-gradle-maven-docker-starter \
-            java-gradle-maven-docker-starter \
-          ; do
-            cd ${parent}/${path} ;
-            bash mvnw >/dev/null ;
-            bash gradlew >/dev/null ;
-            docker-compose build --force-rm --no-cache --pull ;
-            docker-compose up --force-recreate --remove-orphans ;
-            docker-compose down -v ;
-          done;
-      #  - docker system prune -af --volumes
-    - stage: deploy
+        - cd ${parent}/scala-gradle-maven-docker-starter ;
+        - bash mvnw >/dev/null ;
+        - bash gradlew >/dev/null ;
+        - docker-compose build --force-rm --no-cache --pull ;
+        - docker-compose up --force-recreate --remove-orphans ;
+        - docker-compose down -v ;
+        #- docker system prune -af --volumes
+    - stage: test
       jdk: openjdk8
-      name: GitHub release and GitHub pages deployment
+      name: kotlin-gradle-maven-docker-starter openjdk8
+      script:
+        - cd ${parent}/kotlin-gradle-maven-docker-starter
+        - bash mvnw >/dev/null
+        - bash gradlew >/dev/null
+        - docker-compose build --force-rm --no-cache --pull
+        - docker-compose up --force-recreate --remove-orphans
+        - docker-compose down -v
+    - stage: test
+      jdk: openjdk8
+      name: java-gradle-maven-docker-starter openjdk8
+      script:
+        - cd ${parent}/java-gradle-maven-docker-starter
+        - bash mvnw >/dev/null
+        - bash gradlew >/dev/null
+        - docker-compose build --force-rm --no-cache --pull
+        - docker-compose up --force-recreate --remove-orphans
+        - docker-compose down -v
+    - stage: deploy
+      jdk: openjdk11
+      name: GitHub release and GitHub pages deployment openjdk11
       script: skip
       if: branch = "master" AND type NOT IN (pull_request)
       before_deploy:
