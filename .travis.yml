@@ -53,6 +53,15 @@ jobs:
   include:
     - stage: test
       jdk: openjdk11
+      name: an-akka-test openjdk11
+      script:
+        - cd $TRAVIS_BUILD_DIR/an-akka-test && java -version
+        - cd $TRAVIS_BUILD_DIR/an-akka-test && ./sbtw clean assembly run
+        - java -jar $TRAVIS_BUILD_DIR/an-akka-test/target/scala-*/*-assembly-*.jar
+        - cd $TRAVIS_BUILD_DIR/an-akka-test && ./sbtw updateClassifiers
+        - cd $TRAVIS_BUILD_DIR/an-akka-test && ./sbtw clean test
+    - stage: test
+      jdk: openjdk11
       name: a-config-akka-example openjdk11
       script:
         - cd $TRAVIS_BUILD_DIR/a-config-akka-example && java -version
@@ -238,6 +247,7 @@ jobs:
         - docker-compose down -v
     - stage: deploy
       jdk: openjdk11
+      #jdk: openjdk8
       name: GitHub release and GitHub pages deployment openjdk11
       script: skip
       if: branch = "master" AND type NOT IN (pull_request)

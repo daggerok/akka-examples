@@ -6,6 +6,10 @@ This repository contains Akka playground projects examples.
 
 link:https://daggerok.github.io/akka-examples[Documentation]
 
+- link:./an-akka-test/[actors testing]
+- link:./a-config-akka-example/[akka config]
+- link:./a-distributed-word-counter-example/[parallel word counter]
+- link:./an-actor-selection-example/[actor selections]
 - link:./a-bank-account-example/[bank account]
 - link:./a-counter-example/[counter]
 - link:./a-self-example/[send message to self]
