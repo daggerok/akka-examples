@@ -1,7 +1,9 @@
 package com.github.daggerok.akka
 
+import java.nio.file.Paths
+
 import akka.actor.ActorSystem
-import com.typesafe.config.ConfigFactory
+import com.typesafe.config.{Config, ConfigFactory}
 
 object Main extends App {
   private val regularConfig = ConfigFactory.load()
@@ -42,4 +44,18 @@ object Main extends App {
   myOtherFileSystem.log.info("4) {}", myOtherFileSystem.toString)
   myOtherFileSystem.log.info("4) log level: {}", myOtherFileConfig.getString("akka.loglevel"))
   myOtherFileSystem.terminate()
+
+  private val jsonPath = Paths.get("config", "my-config.json")
+  private val jsonConfig = ConfigFactory.load(jsonPath.toFile.toString)
+  private val jsonSystem = ActorSystem("json-system", jsonConfig)
+  jsonSystem.log.warning("5) this is my json configured system:")
+  jsonSystem.log.warning("5) aJsonString: {}", jsonConfig.getString("aJsonString"))
+  jsonSystem.terminate()
+
+  private val propertiesFile = Paths.get("config", "my-application.properties").toFile
+  private val propertiesConfig = ConfigFactory.load(propertiesFile.toString)
+  private val propertiesSystem = ActorSystem("properties-system", propertiesConfig)
+  propertiesSystem.log.debug("6) this is my properties configured system:")
+  propertiesSystem.log.debug("6) aProperty: {}", propertiesConfig.getString("aProperty"))
+  propertiesSystem.terminate()
 }
