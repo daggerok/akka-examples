@@ -1,4 +1,4 @@
-name := "a-child-actor-example"
+name := "a-distributed-word-counter-example"
 
 version := "0.1"
 
