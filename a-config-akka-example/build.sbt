@@ -1,4 +1,4 @@
-name := "a-simple-example"
+name := "a-config-akka-example"
 
 version := "0.1"
 

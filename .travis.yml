@@ -52,6 +52,15 @@ stages:
 jobs:
   include:
     - stage: test
+      jdk: openjdk11
+      name: a-config-akka-example openjdk11
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-config-akka-example && java -version
+        - cd $TRAVIS_BUILD_DIR/a-config-akka-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-config-akka-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-config-akka-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-config-akka-example/target/scala-*/*-assembly-*.jar
+    - stage: test
       jdk: openjdk12
       name: a-distributed-word-counter-example openjdk12
       script:
