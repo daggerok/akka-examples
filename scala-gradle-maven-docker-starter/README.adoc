@@ -1,4 +1,4 @@
-= akka
+= akka image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
 
 //tag::content[]
 

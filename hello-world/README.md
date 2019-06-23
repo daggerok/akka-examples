@@ -1,4 +1,4 @@
-# Akka Hello World
+# Akka Hello World [![Build Status](https://travis-ci.org/daggerok/akka-examples.svg?branch=master)](https://travis-ci.org/daggerok/akka-examples)
 Simple Akka starter based on Java and Spring, using Gradle / Maven build tools.
 
 _build and test_
