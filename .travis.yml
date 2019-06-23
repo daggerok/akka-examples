@@ -53,6 +53,15 @@ jobs:
   include:
     - stage: test
       jdk: openjdk-ea
+      name: an-actor-selection-example
+      script:
+        - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && java -version
+        - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/an-actor-selection-example/target/scala-*/*-assembly-*.jar
+    - stage: test
+      jdk: openjdk-ea
       name: hello-world
       script:
         # jdk 12
@@ -63,7 +72,7 @@ jobs:
         - java -jar ./build/libs/*-all.jar
     - stage: test
       jdk: openjdk11
-      name: a-child-actor-example openjdk8
+      name: a-child-actor-example openjdk11
       script:
         - cd $TRAVIS_BUILD_DIR/a-child-actor-example && ./sbtw clean test
         - cd $TRAVIS_BUILD_DIR/a-child-actor-example && ./sbtw run
@@ -71,7 +80,7 @@ jobs:
         - java -jar $TRAVIS_BUILD_DIR/a-child-actor-example/target/scala-*/*-assembly-*.jar
     - stage: test
       jdk: openjdk11
-      name: a-bank-account-example openjdk8
+      name: a-bank-account-example openjdk11
       script:
         - cd $TRAVIS_BUILD_DIR/a-bank-account-example && ./sbtw clean test
         - cd $TRAVIS_BUILD_DIR/a-bank-account-example && ./sbtw run
@@ -79,7 +88,7 @@ jobs:
         - java -jar $TRAVIS_BUILD_DIR/a-bank-account-example/target/scala-*/*-assembly-*.jar
     - stage: test
       jdk: openjdk11
-      name: a-counter-example openjdk8
+      name: a-counter-example openjdk11
       script:
         - cd $TRAVIS_BUILD_DIR/a-counter-example && ./sbtw clean test
         - cd $TRAVIS_BUILD_DIR/a-counter-example && ./sbtw run

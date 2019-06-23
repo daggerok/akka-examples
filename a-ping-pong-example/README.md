@@ -1,4 +1,4 @@
-# A Ping Pong Example [![Build Status](https://travis-ci.org/daggerok/akka-examples.svg?branch=master)](https://travis-ci.org/daggerok/akka-examples)
+# ping-pong example [![Build Status](https://travis-ci.org/daggerok/akka-examples.svg?branch=master)](https://travis-ci.org/daggerok/akka-examples)
 A simple akka getting started example quickly created in idea IDE (sbt wrapper, scala 2.13, akka 2.6.x + testkit, scalatest, scalactic)
 
 _test_ and _run_ app:
