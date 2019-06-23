@@ -53,6 +53,14 @@ jobs:
   include:
     - stage: test
       jdk: openjdk11
+      name: a-child-actor-example openjdk8
+      script:
+        - cd $TRAVIS_BUILD_DIR/a-child-actor-example && ./sbtw clean test
+        - cd $TRAVIS_BUILD_DIR/a-child-actor-example && ./sbtw run
+        - cd $TRAVIS_BUILD_DIR/a-child-actor-example && ./sbtw clean assembly
+        - java -jar $TRAVIS_BUILD_DIR/a-child-actor-example/target/scala-*/*-assembly-*.jar
+    - stage: test
+      jdk: openjdk11
       name: a-bank-account-example openjdk8
       script:
         - cd $TRAVIS_BUILD_DIR/a-bank-account-example && ./sbtw clean test
