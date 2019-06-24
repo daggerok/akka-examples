@@ -16,7 +16,7 @@ object UpperCaseActor {
   }
 }
 
-class ActorsSpec extends TestKit(ActorSystem("upper-case-system-under-test"))
+class UpperCaseActorSpec extends TestKit(ActorSystem("upper-case-system-under-test"))
   with ImplicitSender with WordSpecLike with BeforeAndAfterAll {
 
   override def afterAll(): Unit = {

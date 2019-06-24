@@ -12,8 +12,9 @@ object SplitterActor {
   }
 }
 
-class ActorsSpec extends TestKit(ActorSystem("splitter-system-under-test"))
+class SplitterActorSpec extends TestKit(ActorSystem("splitter-system-under-test"))
   with ImplicitSender with WordSpecLike with BeforeAndAfterAll {
+
   override def afterAll(): Unit = {
     TestKit.shutdownActorSystem(system)
   }
