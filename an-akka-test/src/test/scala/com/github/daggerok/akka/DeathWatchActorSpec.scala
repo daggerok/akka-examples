@@ -91,7 +91,7 @@ class DeathWatchActorSpec extends TestKit(
       val auditingActorRef = actorRefs.head
       parent ! Watch(auditingActorRef)
       receiveWhile(messages = 1) {
-        case watchMessage => // ignore...
+        case watchMessage => watchMessage // ignore...
       }
 
       auditingActorRef ! "this message is for auditingActorRef"
