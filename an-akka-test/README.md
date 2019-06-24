@@ -1,4 +1,4 @@
-# simple akka config example [![Build Status](https://travis-ci.org/daggerok/akka-examples.svg?branch=master)](https://travis-ci.org/daggerok/akka-examples)
+# akka test-kit specs [![Build Status](https://travis-ci.org/daggerok/akka-examples.svg?branch=master)](https://travis-ci.org/daggerok/akka-examples)
 A simple akka getting started example quickly created in idea IDE (sbt wrapper, scala 2.12.8, akka 2.6.x + testkit, scalatest, scalactic)
 
 ## getting started
