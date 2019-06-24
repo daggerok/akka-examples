@@ -5,7 +5,7 @@ import akka.testkit.{ImplicitSender, TestKit}
 import org.scalatest.{BeforeAndAfterAll, WordSpecLike}
 
 object SpecialMessagesToStopActor {
-  case class Forward(message:  String)
+  case class Forward(message: String)
 
   class Child extends Actor with ActorLogging {
     override def receive: Receive = {
@@ -58,7 +58,7 @@ class SpecialMessagesToStopActorSpec extends TestKit(ActorSystem("poison-pill-an
       }
     }
 
-    "stop actor hierarchy with special message: Kill" in {
+    "stop actor hierarchy with special message: Kill, which is makes an actor throw an ActorKillException" in {
       val masterRef = system.actorOf(Props[Master], "master")
 
       masterRef ! "hello, killer!"
