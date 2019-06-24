@@ -3,7 +3,7 @@ package com.github.daggerok.akka
 import java.time.LocalDate
 
 import akka.actor.{Actor, ActorSystem, InvalidMessageException, Props}
-import akka.testkit.{ImplicitSender, TestKit}
+import akka.testkit.{ImplicitSender, TestKit, TestProbe}
 import org.scalatest.{BeforeAndAfterAll, WordSpecLike}
 
 object ReverseActor {
@@ -97,6 +97,22 @@ class ActorsSpec extends TestKit(ActorSystem("system-under-test"))
     "send back strings as individual messages back" in {
       ref ! " give me more!!!11one "
       expectMsgAllOf("give", "me", "more!!!11one")
+    }
+  }
+
+  "A TestProbe" should {
+    val probe = TestProbe("FirstBlood")
+
+    "send message to default testActor" in {
+      val message = "Hello, testActor!"
+      probe.send(testActor, message)
+      expectMsg(message)
+    }
+
+    "receive a message from default testActor" in {
+      val message = "Hello, probe.ref!"
+      probe.ref ! message
+      probe.expectMsg(message)
     }
   }
 }
