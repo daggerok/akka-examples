@@ -39,6 +39,7 @@ class SpecialMessagesToStopActorSpec extends TestKit(ActorSystem("poison-pill-an
 
   "A Master / Child actors" should {
     import SpecialMessagesToStopActor._
+
     import concurrent.duration._
 
     "stop all actors with special message: PoisonPill" in {

@@ -1,7 +1,7 @@
 package com.github.daggerok.akka.lifecycle
 
 import akka.actor.{Actor, ActorLogging, ActorSystem, PoisonPill, Props}
-import akka.testkit.{ImplicitSender, TestKit, TestProbe}
+import akka.testkit.{ImplicitSender, TestKit}
 import org.scalatest.{BeforeAndAfterAll, WordSpecLike}
 
 object LifeCycleActor {

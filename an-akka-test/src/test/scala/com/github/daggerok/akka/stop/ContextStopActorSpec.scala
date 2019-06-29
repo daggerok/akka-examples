@@ -26,6 +26,7 @@ class ContextStopActorSpec extends TestKit(ActorSystem("stop-system-under-test")
 
   "A ContextStopActor" should {
     import ContextStopActor._
+
     import concurrent.duration._
     val actorRef = system.actorOf(Props[ContextStopActor])
 

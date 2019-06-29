@@ -39,6 +39,7 @@ class ContextHierarchicalStopActorSpec extends TestKit(ActorSystem("hierarchical
 
   "A ContextHierarchicalStopActor" should {
     import ContextHierarchicalStopActor._
+
     import concurrent.duration._
     val masterRef = system.actorOf(Props[Master], "master")
     val childRef = system.actorSelection("user/master/child")

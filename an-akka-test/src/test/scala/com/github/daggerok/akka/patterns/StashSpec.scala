@@ -1,6 +1,6 @@
-package com.github.daggerok.akka.stash
+package com.github.daggerok.akka.patterns
 
-import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props, Stash}
+import akka.actor.{Actor, ActorLogging, ActorSystem, Props, Stash}
 import akka.testkit.{ImplicitSender, TestKit}
 import org.scalatest.{BeforeAndAfterAll, WordSpecLike}
 

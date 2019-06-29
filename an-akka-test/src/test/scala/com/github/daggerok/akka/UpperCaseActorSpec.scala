@@ -25,6 +25,7 @@ class UpperCaseActorSpec extends TestKit(ActorSystem("upper-case-system-under-te
 
   "An UpperCaseActor" should {
     import UpperCaseActor._
+
     import concurrent.duration._
     val actor = system.actorOf(Props[UpperCaseActor])
 

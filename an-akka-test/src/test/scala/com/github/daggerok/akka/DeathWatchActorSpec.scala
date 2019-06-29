@@ -1,10 +1,11 @@
 package com.github.daggerok.akka
 
-import akka.actor.{Actor, ActorLogging, ActorRef, ActorSelection, ActorSystem, Kill, PoisonPill, Props, Terminated}
+import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Kill, PoisonPill, Props, Terminated}
 import akka.testkit.{ImplicitSender, TestKit}
 import com.typesafe.config.ConfigFactory
 import org.scalatest.{BeforeAndAfterAll, WordSpecLike}
-import concurrent.duration._
+
+import scala.concurrent.duration._
 
 object DeathWatchActor {
   case class Initialize(name: String)
