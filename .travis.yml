@@ -88,8 +88,8 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && ./sbtw clean assembly
         - java -jar $TRAVIS_BUILD_DIR/an-actor-selection-example/target/scala-*/*-assembly-*.jar
     - stage: test
-      jdk: openjdk-ea
-      #jdk: openjdk12
+      #jdk: openjdk-ea
+      jdk: openjdk12
       name: hello-world openjdk-ea
       script:
         - cd ${parent}/hello-world

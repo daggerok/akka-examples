@@ -12,8 +12,8 @@ version := "0.1"
 
 scalaVersion := "2.13.0"
 
-val akkaVersion = "2.6.0-M3"
-val scalatestVersion = "3.0.8"
+val akkaVersion = "2.6.0-M8"
+val scalatestVersion = "3.2.0-M1"
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
@@ -42,7 +42,7 @@ _test_ and _run_ app:
 create _project/assembly.sbt_ file:
 
 ```scala
-addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.9")
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")
 ```
 
 update _build.sbt_ file:
@@ -50,7 +50,7 @@ update _build.sbt_ file:
 ```scala
 lazy val commonSettings = Seq(
   organization := "com.github.daggerok",
-  scalaVersion := "2.12.6",
+  scalaVersion := "2.13.0",
   test in assembly := {}
 )
 
