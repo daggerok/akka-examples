@@ -45,14 +45,18 @@ stages:
 jobs:
   include:
     - stage: test
-      #jdk: openjdk-ea
+      jdk: openjdk11
+      name: rsocket-akka-app
+      script:
+        - cd $TRAVIS_BUILD_DIR/rsocket-akka-app && ./gradlew clean build fatJar
+        - java -jar $TRAVIS_BUILD_DIR/rsocket-akka-app/build/libs/*-all.jar
+    - stage: test
       jdk: openjdk11
       name: hello-world-gradle
       script:
         - cd ${parent}/hello-world-gradle && ./gradlew clean build fatJar
         - java -jar ./build/libs/*-all.jar
     - stage: test
-      #jdk: openjdk-ea
       jdk: openjdk11
       name: hello-world-maven
       script:
