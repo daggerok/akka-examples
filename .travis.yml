@@ -45,6 +45,30 @@ stages:
 jobs:
   include:
     - stage: test
+      #jdk: openjdk-ea
+      jdk: openjdk11
+      name: hello-world-gradle
+      script:
+        - cd ${parent}/hello-world-gradle && ./gradlew clean build fatJar
+        - java -jar ./build/libs/*-all.jar
+    - stage: test
+      #jdk: openjdk-ea
+      jdk: openjdk11
+      name: hello-world-maven
+      script:
+        - cd ${parent}/hello-world-maven && ./mvnw clean package
+        - java -jar ./target/*-all.jar
+#    - stage: test
+#      #jdk: openjdk-ea
+#      jdk: openjdk12
+#      name: hello-world openjdk-ea
+#      script:
+#        - cd ${parent}/hello-world
+#        - ./mvnw clean package
+#        - java -jar ./target/*-all.jar
+#        - ./gradlew clean build fatJar
+#        - java -jar ./build/libs/*-all.jar
+    - stage: test
       jdk: openjdk11
       name: an-akka-test openjdk11
       script:
@@ -80,16 +104,6 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && ./sbtw run
         - cd $TRAVIS_BUILD_DIR/an-actor-selection-example && ./sbtw clean assembly
         - java -jar $TRAVIS_BUILD_DIR/an-actor-selection-example/target/scala-*/*-assembly-*.jar
-    - stage: test
-      #jdk: openjdk-ea
-      jdk: openjdk12
-      name: hello-world openjdk-ea
-      script:
-        - cd ${parent}/hello-world
-        - ./mvnw clean package
-        - java -jar ./target/*-all.jar
-        - ./gradlew clean build fatJar
-        - java -jar ./build/libs/*-all.jar
     - stage: test
       jdk: openjdk11
       name: a-child-actor-example openjdk11
