@@ -7,15 +7,13 @@ notifications:
 git:
   quiet: true
   depth: false
-env:
-  global:
-    - TERM=dumb
 language: java
 jdk: openjdk8
 python: 3.7
 os: linux
 arch: amd64
 install: true
+services: docker
 addons:
   apt:
     update: true
@@ -23,6 +21,7 @@ addons:
       - curl
       - python3-pip
       - libhsdis0-fcml
+      - docker-ce
 before_install:
   - export PATH=$HOME/.local/bin:$PATH
   - pip3 install --user --upgrade pip setuptools
