@@ -6,28 +6,33 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.daggerok</groupId>
   <artifactId>hello-world</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.1-SNAPSHOT</version>
 
   <properties>
     <mainClass>com.github.daggerok.App</mainClass>
 
-    <akka.version>2.5.21</akka.version>
-    <spring.version>5.1.6.RELEASE</spring.version>
-    <vavr.version>0.10.0</vavr.version>
-    <lombok.version>1.18.6</lombok.version>
-    <slf4j-api.version>1.7.26</slf4j-api.version>
-    <logback-classic.version>1.2.3</logback-classic.version>
-    <junit-jupiter.version>5.5.0-M1</junit-jupiter.version>
-    <assertj.version>3.12.2</assertj.version>
-    <junit4.version>4.12</junit4.version>
-
-    <java.version>12</java.version>
+    <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
     <encoding>UTF-8</encoding>
     <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+
+    <akka.version>2.6.1</akka.version>
+    <vavr.version>0.10.2</vavr.version>
+    <lombok.version>1.18.10</lombok.version>
+    <assertj.version>3.14.0</assertj.version>
+    <junit4.version>4.13-rc-2</junit4.version>
+    <slf4j-api.version>1.7.26</slf4j-api.version>
+    <spring.version>5.2.2.RELEASE</spring.version>
+    <junit-jupiter.version>5.5.2</junit-jupiter.version>
+    <logback-classic.version>1.2.3</logback-classic.version>
+
+    <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
+    <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
   </properties>
 
   <dependencyManagement>
@@ -121,7 +126,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>${maven-compiler-plugin.version}</version>
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
@@ -155,13 +160,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M3</version>
+        <version>${maven-surefire-plugin.version}</version>
       </plugin>
 
       <plugin><!-- main + fat jar -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.1</version>
+        <version>${maven-shade-plugin.version}</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -184,7 +189,7 @@
       <plugin><!-- zip -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.1.1</version>
+        <version>${maven-assembly-plugin.version}</version>
         <executions>
           <execution>
             <phase>package</phase>

@@ -1,19 +1,30 @@
-import org.gradle.api.tasks.testing.logging.TestLogEvent.*
-
 plugins {
   java
   application
-  id("io.franzbecker.gradle-lombok") version "2.1"
+  id("com.github.ben-manes.versions")
+  id("io.franzbecker.gradle-lombok")
 }
 
+val mainClass: String by project
+val akkaVersion: String by project
+val vavrVersion: String by project
+val slf4jVersion: String by project
+val lombokVersion: String by project
+val springVersion: String by project
+val junit4Version: String by project
+val logbackVersion: String by project
+val assertkVersion: String by project
+val assertjVersion: String by project
+val javaVersion = JavaVersion.VERSION_11
+val junitJupiterVersion: String by project
+val gradleWrapperVersion: String by project
+
 tasks.withType(Wrapper::class.java) {
-  val gradleWrapperVersion: String by project
   gradleVersion = gradleWrapperVersion
   distributionType = Wrapper.DistributionType.BIN
 }
 
 java {
-  val javaVersion = JavaVersion.VERSION_12
   sourceCompatibility = javaVersion
   targetCompatibility = javaVersion
 }
@@ -22,21 +33,9 @@ repositories {
   mavenCentral()
 }
 
-val lombokVersion: String by project
-
 lombok {
   version = lombokVersion
 }
-
-val akkaVersion: String by project
-val springVersion: String by project
-val vavrVersion: String by project
-val slf4jVersion: String by project
-val logbackVersion: String by project
-val junit4Version: String by project
-val assertkVersion: String by project
-val assertjVersion: String by project
-val junitJupiterVersion: String by project
 
 dependencies {
   implementation("com.typesafe.akka:akka-actor_2.12:$akkaVersion")
@@ -63,11 +62,13 @@ tasks.withType<Test> {
   testLogging {
     showExceptions = true
     showStandardStreams = true
-    events(PASSED, SKIPPED, FAILED)
+    events(
+        org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
+        org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
+        org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+    )
   }
 }
-
-val mainClass: String by project
 
 application {
   mainClassName = mainClass
