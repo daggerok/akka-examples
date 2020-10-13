@@ -23,7 +23,7 @@
     <vavr.version>0.10.2</vavr.version>
     <lombok.version>1.18.10</lombok.version>
     <assertj.version>3.14.0</assertj.version>
-    <junit4.version>4.13-rc-2</junit4.version>
+    <junit4.version>4.13.1</junit4.version>
     <slf4j-api.version>1.7.26</slf4j-api.version>
     <spring.version>5.2.2.RELEASE</spring.version>
     <junit-jupiter.version>5.5.2</junit-jupiter.version>
