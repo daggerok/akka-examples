@@ -1,4 +1,6 @@
-= akka-examples image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
+= akka-examples image:https://github.com/daggerok/akka-examples/actions/workflows/ci.yaml/badge.svg["Build Status", link="https://github.com/daggerok/akka-examples/actions/workflows/ci.yaml"]
+
+//image:https://travis-ci.org/daggerok/akka-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/akka-examples"]
 
 //tag::content[]
 
