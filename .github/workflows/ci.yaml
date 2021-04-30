@@ -53,6 +53,29 @@ jobs:
           java-version: 11
       - run: cd ./rsocket-akka-app ; ./gradlew clean build fatJar
       - run: java -jar ./rsocket-akka-app/build/libs/*-all.jar
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        id: akka-examples-gradle
+        with:
+          path: ~/.gradle
+          key: ${{ runner.os }}-${{ hashFiles('**/build.gradle.kts') }}
+      - uses: actions/cache@v2
+        id: akka-examples-mvn
+        with:
+          path: |
+            ~/.m2
+            !~/.m2/repository/com/gituhb/daggerok
+          key: ${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - run: cd ./hello-world-gradle ; ./gradlew clean build fatJar
+      - run: cd ./hello-world-gradle ; java -jar ./build/libs/*-all.jar
+      - run: cd ./hello-world-maven ; ./mvnw clean package
+      - run: cd ./hello-world-maven ; java -jar ./target/*-all.jar
   github-pages:
     runs-on: ubuntu-latest
     steps:
