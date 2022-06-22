@@ -15,7 +15,7 @@
     <encoding>UTF-8</encoding>
     <scala.compat.version>2.11</scala.compat.version>
     <scala.version>${scala.compat.version}.8</scala.version>
-    <akka.version>2.5.9</akka.version>
+    <akka.version>2.5.31</akka.version>
     <scalatestic.version>3.0.4</scalatestic.version>
     <lombok.version>1.16.18</lombok.version>
     <slf4j.version>1.7.25</slf4j.version>
