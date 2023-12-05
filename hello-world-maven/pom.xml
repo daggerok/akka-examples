@@ -27,7 +27,7 @@
     <slf4j-api.version>1.7.26</slf4j-api.version>
     <spring.version>5.2.2.RELEASE</spring.version>
     <junit-jupiter.version>5.5.2</junit-jupiter.version>
-    <logback-classic.version>1.2.3</logback-classic.version>
+    <logback-classic.version>1.2.13</logback-classic.version>
 
     <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
     <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
